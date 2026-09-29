@@ -59,6 +59,7 @@ function Index() {
       menuBtn?.setAttribute('aria-expanded', String(Boolean(open)))
     })
     menu?.querySelectorAll('a').forEach(el => on(el, 'click', closeMenu))
+    on(query('#voltar-topo'), 'click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target) }
     }), { threshold: .08 })

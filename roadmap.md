@@ -2,4 +2,4 @@
 - [x] Correct the light-mode logo and apply the brand palette.
 - [x] Rework the opening image/type/animation and move the globe to the final section.
 - [x] Redesign responsible AI, shared-benefits diagram, and three-month CTA.
-- [ ] Verify desktop/mobile rendering and interactions.
+- [x] Verify desktop/mobile rendering and interactions.
