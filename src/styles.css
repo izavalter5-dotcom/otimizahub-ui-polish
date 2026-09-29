@@ -113,7 +113,7 @@ body { margin:0 }
 /* Relocated globe occupies the final band without a decorative card */
 .oh-page .oh-contact { min-height:530px; display:flex; align-items:center; position:relative; isolation:isolate; overflow:hidden; background:var(--oh-night)!important; padding:95px max(5vw,24px)!important }
 .oh-page .oh-contact:before { display:none }
-.oh-globe-root { position:absolute; width:min(64vw,760px); height:620px; right:-4%; top:50%; transform:translateY(-50%); opacity:.8; z-index:-1; pointer-events:none }
+.oh-globe-root { position:absolute; width:min(64vw,760px); height:620px; right:-4%; top:50%; transform:translateY(-50%); opacity:.8; z-index:0; pointer-events:none }
 .oh-contact>.max-w-5xl { width:min(1200px,100%); max-width:1200px; margin:auto; padding:0; position:relative; z-index:2 }
 .oh-page .oh-contact .contact-cta-card { border:0!important; background:none!important; box-shadow:none!important; text-align:left; padding:0!important; overflow:visible; max-width:720px }
 .oh-contact .contact-cta-card h2 { font:700 clamp(2.3rem,4.8vw,5rem)/1.12 "Sora",sans-serif; letter-spacing:0; max-width:720px }
@@ -146,3 +146,6 @@ body { margin:0 }
 }
 @media (max-width:380px) { .oh-hero h1 { font-size:2.15rem } .oh-kicker { font-size:.61rem } .oh-path { grid-template-columns:1fr } .oh-path-step { min-height:130px }.oh-path-step:after { display:none!important } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto }.oh-hero-inner { animation:none } .oh-page .reveal { opacity:1!important; transform:none!important } }
+
+.oh-page header .theme-logo { display:block; width:174px; height:52px; object-fit:contain }
+.oh-page .oh-contact .contact-cta-card { opacity:1!important; transform:none!important }

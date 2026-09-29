@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import rawPage from '../content/otimizahub.html?raw'
 import { Globe } from '../components/Globe'
@@ -21,6 +21,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const container = useRef<HTMLDivElement>(null)
+  const pageMarkup = useMemo(() => ({ __html: rawPage }), [])
   const [globeTarget, setGlobeTarget] = useState<HTMLElement | null>(null)
   useEffect(() => {
     const root = container.current
@@ -87,7 +88,7 @@ function Index() {
     })
     const globeEl = query<HTMLElement>('#oh-globe-root')
     setGlobeTarget(globeEl)
-    return () => { observer.disconnect(); events.forEach(off => off()); setGlobeTarget(null) }
+    return () => { observer.disconnect(); events.forEach(off => off()) }
   }, [])
-  return <><div ref={container} className="oh-page" dangerouslySetInnerHTML={{ __html: rawPage }} />{globeTarget && createPortal(<Globe />, globeTarget)}</>
+  return <><div ref={container} className="oh-page" dangerouslySetInnerHTML={pageMarkup} />{globeTarget && createPortal(<Globe />, globeTarget)}</>
 }
