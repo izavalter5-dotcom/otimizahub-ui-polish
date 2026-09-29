@@ -89,5 +89,5 @@ function Index() {
     setGlobeTarget(globeEl)
     return () => { observer.disconnect(); events.forEach(off => off()); setGlobeTarget(null) }
   }, [])
-  return <div ref={container} className="oh-page" dangerouslySetInnerHTML={{ __html: rawPage }} />
+  return <><div ref={container} className="oh-page" dangerouslySetInnerHTML={{ __html: rawPage }} />{globeTarget && createPortal(<Globe />, globeTarget)}</>
 }
