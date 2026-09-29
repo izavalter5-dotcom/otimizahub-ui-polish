@@ -63,9 +63,9 @@ function Index() {
     }), { threshold: .08 })
     root.querySelectorAll('.reveal').forEach(el => observer.observe(el))
     root.querySelectorAll<HTMLElement>('.showcase-tab').forEach(tab => on(tab, 'click', () => {
-      const key = tab.dataset.showcase
+      const key = tab.dataset['showcase']
       root.querySelectorAll<HTMLElement>('.showcase-tab').forEach(item => {
-        const active = item.dataset.showcase === key
+        const active = item.dataset['showcase'] === key
         item.classList.toggle('active', active); item.setAttribute('aria-selected', String(active))
       })
       root.querySelectorAll<HTMLElement>('.showcase-panel').forEach(panel => {
@@ -75,7 +75,7 @@ function Index() {
     }))
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el => on(el, 'click', () => {
       const select = query<HTMLSelectElement>('#servico')
-      if (select && el.dataset.plano) select.value = el.dataset.plano
+      if (select && el.dataset['plano']) select.value = el.dataset['plano']
     }))
     const year = query('#ano')
     if (year) year.textContent = String(new Date().getFullYear())
