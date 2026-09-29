@@ -149,3 +149,6 @@ body { margin:0 }
 
 .oh-page header .theme-logo { display:block; width:174px; height:52px; object-fit:contain }
 .oh-page .oh-contact .contact-cta-card { opacity:1!important; transform:none!important }
+
+.oh-page.theme-dark header .theme-logo { content:url("/media/otimizahub-logo-dark.webp") }
+.oh-page .oh-ai-step:nth-child(2) .oh-ai-symbol { background:color-mix(in oklch,var(--oh-green) 13%,var(--oh-white))!important }
