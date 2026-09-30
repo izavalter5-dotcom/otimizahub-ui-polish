@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import rawPage from '../content/otimizahub.html?raw'
-import { Globe } from '../components/Globe'
+import workspaceImage from '../assets/hero-workspace.jpg'
+import contactImage from '../assets/contact-people.jpg'
+import foodImage from '../assets/menu-food.jpg'
 
 const description = 'A OtimizaHub simplifica a presença digital de micro e pequenas empresas com Perfil da Empresa no Google, landing pages profissionais e páginas de vendas.'
 
@@ -22,10 +23,16 @@ export const Route = createFileRoute('/')({
 function Index() {
   const container = useRef<HTMLDivElement>(null)
   const pageMarkup = useMemo(() => ({ __html: rawPage }), [])
-  const [globeTarget, setGlobeTarget] = useState<HTMLElement | null>(null)
+  const [imageReady, setImageReady] = useState(false)
   useEffect(() => {
     const root = container.current
     if (!root) return
+    const heroPhoto = root.querySelector<HTMLImageElement>('.oh-hero-media img')
+    if (heroPhoto && Math.random() < .5) heroPhoto.src = workspaceImage
+    const contactPhoto = root.querySelector<HTMLImageElement>('.oh-contact-media img')
+    if (contactPhoto) contactPhoto.src = contactImage
+    root.style.setProperty('--oh-menu-image', `url("${foodImage}")`)
+    setImageReady(true)
     const query = <T extends Element>(selector: string) => root.querySelector<T>(selector)
     const events: Array<() => void> = []
     const on = (el: Element | null, event: string, fn: EventListener) => {
@@ -87,9 +94,7 @@ function Index() {
       try { localStorage.setItem('otimizahub-cookie-consent', 'accepted') } catch { /* storage may be blocked */ }
       banner?.remove()
     })
-    const globeEl = query<HTMLElement>('#oh-globe-root')
-    setGlobeTarget(globeEl)
     return () => { observer.disconnect(); events.forEach(off => off()) }
   }, [])
-  return <><div ref={container} className="oh-page" dangerouslySetInnerHTML={pageMarkup} />{globeTarget && createPortal(<Globe />, globeTarget)}</>
+  return <div ref={container} className="oh-page" data-images-ready={imageReady ? 'true' : undefined} dangerouslySetInnerHTML={pageMarkup} />
 }
