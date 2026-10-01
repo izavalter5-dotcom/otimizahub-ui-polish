@@ -4,6 +4,7 @@ import rawPage from '../content/otimizahub.html?raw'
 import workspaceImage from '../assets/hero-workspace.jpg'
 import contactImage from '../assets/contact-people.jpg'
 import foodImage from '../assets/menu-food.jpg'
+import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
 
 const description = 'A OtimizaHub simplifica a presença digital de micro e pequenas empresas com Perfil da Empresa no Google, landing pages profissionais e páginas de vendas.'
 
@@ -22,7 +23,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const container = useRef<HTMLDivElement>(null)
-  const pageMarkup = useMemo(() => ({ __html: rawPage }), [])
+  const pageMarkup = useMemo(() => ({ __html: rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo) }), [])
   const [imageReady, setImageReady] = useState(false)
   useEffect(() => {
     const root = container.current
