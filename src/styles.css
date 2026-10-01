@@ -214,3 +214,8 @@ body { margin:0 }
 .oh-page.theme-dark #mobile-menu,.oh-page.theme-dark header { background:var(--oh-night)!important }.oh-page.theme-dark #mobile-menu nav,.oh-page.theme-dark header nav,.oh-page.theme-dark .theme-toggle { color:var(--oh-white)!important }
 @media(max-width:900px) { .oh-dashboard-wrap { grid-template-columns:1fr; gap:35px }.oh-dashboard-intro { max-width:720px }.oh-process-grid { grid-template-columns:repeat(2,minmax(0,1fr)) } }
 @media(max-width:640px) { .oh-page .oh-hero { min-height:min(760px,89svh) }.oh-dashboard { padding:14px }.oh-metrics { grid-template-columns:repeat(2,minmax(0,1fr)) }.oh-dashboard-bottom { grid-template-columns:1fr }.oh-dashboard-top { align-items:flex-start; flex-direction:column }.oh-partner-statement { align-items:flex-start; flex-direction:column }.oh-partner-seal { flex:0 0 105px; width:105px; height:105px; align-self:flex-end }.oh-process-grid { grid-template-columns:1fr; gap:10px }.oh-process-card { min-height:0 }.oh-about-stamp { right:4px; bottom:-38px }.oh-page #sobre { padding-bottom:110px }.oh-page #equipe .team-profile-card>div:first-child { height:300px!important; min-height:300px!important }.oh-page .oh-contact { min-height:640px; padding-top:210px!important }.oh-contact-media img { object-position:68% center }.oh-contact-media:after { background:linear-gradient(0deg,var(--oh-night) 2%,color-mix(in oklch,var(--oh-night) 82%,transparent) 55%,color-mix(in oklch,var(--oh-night) 10%,transparent) 100%) } }
+
+/* Dark-mode contrast for responsible-AI block */
+.oh-page.theme-dark .oh-ai-head em { color: #c4a6f7; }
+.oh-page.theme-dark .oh-ai-step > span { color: #c4a6f7; }
+.oh-page.theme-dark .oh-ai-symbol { background: rgba(169,112,244,.18); color: #d9c4fb; }
