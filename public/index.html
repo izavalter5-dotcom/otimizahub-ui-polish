@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grazi Nails | Nail Designer em São Brás, União da Vitória - PR</title>
+  <meta name="description" content="Grazi Nails: nail designer em São Brás, União da Vitória - PR. Manicure, pedicure, gel, blindagem, alongamento e nail art. Agende seu atendimento.">
+  <meta name="theme-color" content="#f4e7e9">
+  <meta property="og:title" content="Grazi Nails | Nail Designer">
+  <meta property="og:description" content="Beleza, cuidado e personalidade em cada detalhe.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Grazi Nails - início">
+      <span class="brand-mark">GN</span>
+      <span><strong>Grazi</strong><small>Nails</small></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#servicos">Serviços</a>
+      <a href="/portfolio.html">Portfólio</a>
+      <a href="#agendamento">Agendar</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="#agendamento">Agendar horário</a>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Nail designer • São Brás • União da Vitória</span>
+        <h1>Suas unhas, sua <em>assinatura.</em></h1>
+        <p>Um atendimento pensado para valorizar seu estilo, cuidar dos detalhes e transformar seu momento de beleza em uma experiência especial.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#agendamento">Quero agendar</a>
+          <a class="btn btn-ghost" href="/portfolio.html">Ver portfólio</a>
+        </div>
+        <div class="trust-row">
+          <span>✦ Atendimento personalizado</span>
+          <span>✦ Horários com agendamento</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração 3D de um vidro de esmalte">
+        <div class="orb orb-a"></div><div class="orb orb-b"></div>
+        <div class="polish-bottle">
+          <div class="cap"></div><div class="neck"></div><div class="bottle"><span>GN</span></div>
+        </div>
+        <div class="splash splash-1"></div><div class="splash splash-2"></div><div class="splash splash-3"></div>
+        <div class="spark spark-1">✦</div><div class="spark spark-2">✧</div>
+      </div>
+    </section>
+
+    <section class="section intro">
+      <div class="section-heading">
+        <span class="eyebrow">Beleza nos detalhes</span>
+        <h2>Um cuidado que combina com você.</h2>
+      </div>
+      <p>Do clássico ao criativo, cada atendimento é construído para respeitar seu estilo, sua rotina e o acabamento que você deseja.</p>
+    </section>
+
+    <section class="section services" id="servicos">
+      <div class="section-heading centered">
+        <span class="eyebrow">Serviços</span>
+        <h2>Escolha o seu momento.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><span>01</span><h3>Manicure clássica</h3><p>Cuidado essencial, acabamento delicado e aparência impecável.</p><a href="#agendamento" data-service="Manicure clássica">Escolher serviço →</a></article>
+        <article class="service-card"><span>02</span><h3>Esmaltação em gel</h3><p>Brilho intenso e acabamento sofisticado para sua rotina.</p><a href="#agendamento" data-service="Esmaltação em gel">Escolher serviço →</a></article>
+        <article class="service-card"><span>03</span><h3>Alongamento em gel</h3><p>Comprimento e formato personalizados para valorizar suas mãos.</p><a href="#agendamento" data-service="Alongamento em gel">Escolher serviço →</a></article>
+        <article class="service-card"><span>04</span><h3>Blindagem</h3><p>Uma camada de cuidado para unhas naturais com visual elegante.</p><a href="#agendamento" data-service="Blindagem">Escolher serviço →</a></article>
+        <article class="service-card"><span>05</span><h3>Pedicure</h3><p>Um ritual de cuidado para completar sua experiência.</p><a href="#agendamento" data-service="Pedicure">Escolher serviço →</a></article>
+        <article class="service-card"><span>06</span><h3>Nail art personalizada</h3><p>Detalhes únicos para quem quer transformar inspiração em estilo.</p><a href="#agendamento" data-service="Nail art personalizada">Escolher serviço →</a></article>
+      </div>
+      <div class="center"><a class="btn btn-outline" href="/portfolio.html">Explorar portfólio completo</a></div>
+    </section>
+
+    <section class="section booking" id="agendamento">
+      <div class="booking-panel">
+        <div class="booking-copy">
+          <span class="eyebrow">Seu próximo momento</span>
+          <h2>Vamos reservar seu horário?</h2>
+          <p>Preencha seus dados e sua preferência. A solicitação será registrada com segurança e você receberá a confirmação pelos canais combinados.</p>
+          <div class="mini-note"><strong>Atendimento:</strong> segunda a sábado, das 09h às 18h.</div>
+        </div>
+        <form id="booking-form" class="booking-form" novalidate>
+          <div class="honeypot" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="field-row">
+            <label>Nome completo<input name="name" required maxlength="80" autocomplete="name"></label>
+            <label>WhatsApp<input name="phone" required maxlength="25" inputmode="tel" autocomplete="tel" placeholder="(42) 99999-9999"></label>
+          </div>
+          <div class="field-row">
+            <label>E-mail <small>(opcional)</small><input name="email" maxlength="160" type="email" autocomplete="email"></label>
+            <label>Serviço<select name="service" required><option value="">Selecione</option><option>Manicure clássica</option><option>Pedicure</option><option>Esmaltação em gel</option><option>Alongamento em gel</option><option>Blindagem</option><option>Nail art personalizada</option></select></label>
+          </div>
+          <div class="field-row">
+            <label>Data<input name="date" type="date" required></label>
+            <label>Horário<input name="time" type="time" min="09:00" max="18:00" step="1800" required></label>
+          </div>
+          <label>Observações <small>(opcional)</small><textarea name="notes" maxlength="400" rows="3" placeholder="Conte algo que possa ajudar no seu atendimento."></textarea></label>
+          <button class="btn btn-primary full" type="submit">Solicitar agendamento</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+
+    <section class="section reviews" id="avaliacoes">
+      <div class="section-heading centered">
+        <span class="eyebrow">Experiências reais</span>
+        <h2>O que clientes dizem no Google.</h2>
+        <p class="review-disclaimer">Avaliações exibidas diretamente do Google quando a integração estiver configurada.</p>
+      </div>
+      <div id="google-reviews" class="review-grid"><div class="review-loading">Carregando avaliações…</div></div>
+      <div class="center"><a id="google-link" class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer" hidden>Ver avaliações no Google</a></div>
+    </section>
+
+    <section class="section location" id="contato">
+      <div>
+        <span class="eyebrow">Onde estamos</span>
+        <h2>Seu momento de beleza, pertinho de você.</h2>
+        <p><strong>Bairro São Brás</strong><br>União da Vitória — Paraná</p>
+      </div>
+      <div class="hours"><span>Horários</span><strong>Segunda a sábado</strong><b>09h às 18h</b></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><a class="brand footer-brand" href="#inicio"><span class="brand-mark">GN</span><span><strong>Grazi</strong><small>Nails</small></span></a><p>Beleza, cuidado e personalidade em cada detalhe.</p></div>
+    <div><h4>Navegação</h4><a href="#servicos">Serviços</a><a href="/portfolio.html">Portfólio</a><a href="#agendamento">Agendamento</a></div>
+    <div><h4>Atendimento</h4><span>São Brás · União da Vitória/PR</span><span>Seg. a sáb. · 09h–18h</span></div>
+    <div><h4>Contato</h4><a href="#" data-whatsapp>WhatsApp</a><a href="#" aria-label="Instagram da Grazi Nails">Instagram</a></div>
+  </footer>
+  <div class="footer-bottom"><span>© 2026 Grazi Nails. Todos os direitos reservados.</span><span><a href="/politica-de-privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a></span></div>
+
+  <a class="whatsapp-float" href="#" data-whatsapp aria-label="Falar com a Grazi Nails pelo WhatsApp">◔<span>WhatsApp</span></a>
+  <script src="/app.js" defer></script>
+</body>
+</html>

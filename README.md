@@ -1,43 +1,28 @@
-# OtimizaHub UI Polish
+# Grazi Nails — página institucional
 
-Por favor, aplique as seguintes melhorias e correções no código da página da OtimizaHub:
+Landing page responsiva para nail designer em São Brás, União da Vitória — PR.
 
-1. Correção da Logo:
-- Ajuste a cor do texto da logo para garantir que ele fique perfeitamente visível e legível também no modo claro da página.
+## Estrutura
+- `index.html`: página principal, serviços, galeria, agendamento e rodapé.
+- `styles.css`: identidade visual, layout responsivo e composição 3D da hero.
+- `app.js`: interações, seleção de serviço e preparação da mensagem de agendamento.
+- `config.js`: campos para inserir WhatsApp, perfil do Google e Instagram.
+- `privacy.html`: aviso de privacidade.
+- `_headers`: exemplo de cabeçalhos de segurança para hospedagens compatíveis (como Netlify).
+- `assets/favicon.svg`: ícone do site.
 
-2. Ajustes no Primeiro Bloco (Hero) e Último Bloco:
-- Pegue o efeito animado atual do primeiro bloco e transfira ele estrategicamente para o último bloco da página (ajustando o contexto para o rodapé/seção final).
-- No topo (primeiro bloco), substitua pelo estilo e formato de animação, fonte e estrutura inspirados na página de referência que enviei (smartadv.com).
+## Configuração antes de publicar
+Edite `config.js` e informe:
+- `whatsappNumber`: número completo com código do país e DDD, apenas dígitos.
+- `googleBusinessUrl`: link do perfil oficial do Google.
+- `instagramUrl`: link do perfil oficial.
 
-3. Redesign do Bloco "IA COM CUIDADO E RESPONSABILIDADE":
-- Modifique totalmente o design e o formato atual deste bloco. A aparência atual não está profissional. Crie um layout limpo, moderno, com cartões bem estruturados ou em formato de passos visuais elegantes que transmitam total seriedade, responsabilidade e transparência no uso da IA.
+A página não inventa avaliações nem exibe nota fictícia. O painel do Google é um espaço de integração a ser configurado com o perfil oficial. As imagens da galeria são referências ilustrativas externas, não um portfólio autoral confirmado.
 
-4. Aplicação Consistente da Paleta de Cores em Todo o Site:
-- Distribua de forma profissional, equilibrada e consciente a nossa paleta em todo o site (como já está parcialmente no bloco "Empresas em Destaque"): use o preto de base sólida, o roxo dominante, os toques de lilás claro, detalhes estratégicos em dourado (em doses bem pequenas e elegantes) e o verde distribuído de forma sutil e estratégica (em checkmarks, setas de crescimento, botões de destaque e ícones de sucesso).
+## Agendamento
+O formulário valida os campos no navegador e abre uma mensagem no WhatsApp. Não há backend, armazenamento de dados, banco de dados ou confirmação automática de disponibilidade. Para agendamento online real com horários bloqueados, lembretes e gestão de clientes, será necessário integrar um backend seguro ou uma plataforma de agenda.
 
-5. Correção do Gráfico no Bloco "O QUE TODOS OS CAMINHOS TÊM EM COMUM":
-- Ajuste o design desse bloco ou o gráfico em si para que ele faça sentido visualmente e transmita profissionalismo, eliminando qualquer aspecto básico ou desconexo.
+## Segurança e publicação
+O projeto evita coletar ou persistir dados no servidor. O arquivo `_headers` oferece uma base de cabeçalhos HTTP, mas só terá efeito em provedores que o reconheçam. Configure HTTPS, proteção contra abuso/rate limits caso seja adicionado um backend, atualizações e monitoramento na hospedagem. Não coloque senhas, tokens ou chaves privadas no frontend. Revise a política de segurança de conteúdo conforme os recursos externos realmente utilizados.
 
-6. Ajuste de Cores nos Planos/Botões:
-- No plano "3 MESES · ECONOMIA", altere a cor do botão "Tenho interesse" para que ele utilize a cor oposta/destacada em relação aos demais, gerando um contraste visual mais forte para conversão.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/2e0b1f5d-07f7-4211-960f-5d8e9b104df3).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Para publicar como site estático, conecte o repositório a uma hospedagem compatível e defina a raiz como diretório do projeto.
