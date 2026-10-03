@@ -12,10 +12,10 @@ function StandalonePage() {
   const container = useRef<HTMLDivElement>(null)
   const markup = useMemo(() => {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const header = html.match(/<header\\b[\\s\\S]*?<\\/header>/i)?.[0] ?? ''
+    const header = html.match(/<header\b[\s\S]*?<\/header>/i)?.[0] ?? ''
     const about = extractSection(html, 'sobre')
     const team = extractSection(html, 'equipe')
-    const footer = html.match(/<footer\\b[\\s\\S]*?<\\/footer>/i)?.[0] ?? ''
+    const footer = html.match(/<footer\b[\s\S]*?<\/footer>/i)?.[0] ?? ''
     return { __html: header + about + team + footer }
   }, [])
 
