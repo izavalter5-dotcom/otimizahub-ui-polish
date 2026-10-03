@@ -250,3 +250,75 @@ body { margin:0 }
 .oh-page.theme-dark .oh-about-note h3 { color:var(--oh-white)!important }
 .oh-page.theme-dark .oh-about-note p { color:color-mix(in oklch,var(--oh-white) 82%,transparent)!important }
 .oh-page.theme-dark .oh-about-note-foot { color:var(--oh-white)!important }
+/* Final OtimizaHub visual hardening: consistent purple system and dark-mode contrast. */
+:root{
+  --oh-brand-purple:#6f2dbd;
+  --oh-brand-purple-dark:#55218f;
+  --oh-brand-purple-light:#c7a5f6;
+  --oh-brand-purple-soft:#f0e7fb;
+  --oh-dark-bg:#180d28;
+  --oh-dark-surface:#241536;
+  --oh-dark-surface-2:#1c1129;
+  --oh-dark-ink:#f3edf8;
+  --oh-dark-muted:#b9c7d0;
+  --oh-dark-border:#4a3561;
+}
+.oh-page .text-brand,.oh-page .text-brand2{color:var(--oh-brand-purple)!important}
+.oh-page .bg-brand{background-color:var(--oh-brand-purple)!important}
+.oh-page .plan-cta-standard,.oh-page .service-cta-unified{background:var(--oh-brand-purple)!important}
+.oh-page .plan-cta-standard:hover,.oh-page .service-cta-unified:hover{background:var(--oh-brand-purple-dark)!important}
+.oh-page .border-brand\/25,.oh-page .border-brand\/30,.oh-page .border-brand\/40{border-color:color-mix(in srgb,var(--oh-brand-purple) 34%,transparent)!important}
+.oh-page .plan-feature>span{color:var(--oh-brand-purple)}
+.oh-page .plan-includes-light{background:var(--oh-brand-purple-soft)!important;border-left-color:var(--oh-brand-purple)!important}
+.oh-page .discount-15{background:var(--oh-brand-purple)!important}
+.oh-page .plan-card-spotlight{border-color:var(--oh-brand-purple)!important}
+
+/* Dark mode: never leave light-theme text colors on dark surfaces. */
+.oh-page.theme-dark{background:var(--oh-dark-bg);color:var(--oh-dark-ink)}
+.oh-page.theme-dark .bg-white,
+.oh-page.theme-dark .bg-mist{background-color:var(--oh-dark-bg)!important}
+.oh-page.theme-dark .text-navy,
+.oh-page.theme-dark .text-ink,
+.oh-page.theme-dark h1,
+.oh-page.theme-dark h2,
+.oh-page.theme-dark h3,
+.oh-page.theme-dark h4,
+.oh-page.theme-dark h5,
+.oh-page.theme-dark h6{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .text-muted,
+.oh-page.theme-dark .text-slate-300,
+.oh-page.theme-dark .text-slate-400{color:var(--oh-dark-muted)!important}
+.oh-page.theme-dark .border-line{border-color:var(--oh-dark-border)!important}
+.oh-page.theme-dark header,
+.oh-page.theme-dark #mobile-menu{background-color:rgba(24,13,40,.97)!important;border-color:var(--oh-dark-border)!important}
+.oh-page.theme-dark header nav,
+.oh-page.theme-dark #mobile-menu nav{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark header a,
+.oh-page.theme-dark #mobile-menu a{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark header a:hover,
+.oh-page.theme-dark #mobile-menu a:hover{color:var(--oh-brand-purple-light)!important}
+.oh-page.theme-dark .theme-toggle{border-color:var(--oh-dark-border)!important;color:var(--oh-dark-ink)!important;background:var(--oh-dark-surface)!important}
+.oh-page.theme-dark input,
+.oh-page.theme-dark textarea,
+.oh-page.theme-dark select{background-color:var(--oh-dark-surface)!important;color:var(--oh-dark-ink)!important;border-color:var(--oh-dark-border)!important}
+.oh-page.theme-dark input::placeholder,
+.oh-page.theme-dark textarea::placeholder{color:#91a3af!important}
+.oh-page.theme-dark .partner-card{background:linear-gradient(180deg,var(--oh-dark-surface) 0%,var(--oh-dark-surface-2) 100%)}
+.oh-page.theme-dark .custom-plan-builder{background:var(--oh-dark-surface)!important;border-color:var(--oh-dark-border)!important}
+.oh-page.theme-dark .custom-plan-builder strong,
+.oh-page.theme-dark .custom-plan-builder .text-navy{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .custom-plan-builder .text-muted{color:var(--oh-dark-muted)!important}
+.oh-page.theme-dark .oh-about-note h3,
+.oh-page.theme-dark .oh-about-note p,
+.oh-page.theme-dark .oh-about-note .oh-eyebrow,
+.oh-page.theme-dark .oh-about-note-foot{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .oh-about-note p{color:var(--oh-dark-muted)!important}
+.oh-page.theme-dark .oh-dashboard-intro h2,
+.oh-page.theme-dark .oh-dashboard-intro p,
+.oh-page.theme-dark .oh-dashboard-intro .oh-dashboard-disclaimer{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .oh-dashboard-intro p{color:var(--oh-dark-muted)!important}
+.oh-page.theme-dark .showcase-shell,
+.oh-page.theme-dark .comparison-table-wrap{border-color:var(--oh-dark-border)!important}
+@media(max-width:767px){
+  .oh-page #equipe .team-profile-card p.text-muted{font-size:.78rem;line-height:1.5}
+}
