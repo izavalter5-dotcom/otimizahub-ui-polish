@@ -3,14 +3,18 @@ import { useEffect, useMemo, useRef } from 'react'
 import rawPage from '../content/otimizahub.html?raw'
 import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
 
+function extractSection(html: string, id: string) {
+  const match = html.match(new RegExp(`<section\\b[^>]*\\bid=["']${id}["'][^>]*>[\\s\\S]*?<\\/section>`, 'i'))
+  return match?.[0] ?? ''
+}
+
 function StandalonePage() {
   const container = useRef<HTMLDivElement>(null)
   const markup = useMemo(() => {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const doc = new DOMParser().parseFromString(html, 'text/html')
-    const header = doc.querySelector('header')?.outerHTML ?? ''
-    const plans = (doc.querySelector('#planos')?.outerHTML ?? '').replaceAll('href="#contato"','href="/#contato"')
-    const footer = doc.querySelector('footer')?.outerHTML ?? ''
+    const header = html.match(/<header\\b[\\s\\S]*?<\\/header>/i)?.[0] ?? ''
+    const plans = extractSection(html, 'planos').replaceAll('href="#contato"', 'href="/#contato"')
+    const footer = html.match(/<footer\\b[\\s\\S]*?<\\/footer>/i)?.[0] ?? ''
     return { __html: header + plans + footer }
   }, [])
 
@@ -31,22 +35,9 @@ function StandalonePage() {
     root.querySelectorAll('#mobile-menu a').forEach(el=>on(el,'click',()=>{menu?.classList.add('hidden');open?.classList.remove('hidden');close?.classList.add('hidden')}))
     root.querySelectorAll<HTMLElement>('.showcase-tab').forEach(tab=>on(tab,'click',()=>{}))
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el=>on(el,'click',()=>{const select=root.querySelector<HTMLSelectElement>('#servico');if(select&&el.dataset['plano'])select.value=el.dataset['plano']}))
-    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>on(el,'change',()=>{
-      el.closest('.plano-check-label')?.classList.toggle('selected',el.checked)
-      const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value)
-      const months=(root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0')
-      const summary=root.querySelector('#custom-plan-summary')
-      if(summary) summary.textContent=selected.length ? selected.join(' + ')+ (months!=='0' ? ` + manutenção por ${months} mês(es) com 15% de desconto` : ' + sem manutenção') : 'Selecione pelo menos um serviço para montar sua solicitação.'
-    }))
+    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>on(el,'change',()=>{el.closest('.plano-check-label')?.classList.toggle('selected',el.checked);const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value);const months=(root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0');const summary=root.querySelector('#custom-plan-summary');if(summary) summary.textContent=selected.length ? selected.join(' + ')+ (months!=='0' ? ` + manutenção por ${months} mês(es) com 15% de desconto` : ' + sem manutenção') : 'Selecione pelo menos um serviço para montar sua solicitação.'}))
     on(root.querySelector('#custom-plan-months'),'change',()=>root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>el.dispatchEvent(new Event('change'))))
-    on(root.querySelector('#custom-plan-submit'),'click',event=>{
-      const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value)
-      if(!selected.length){event.preventDefault();alert('Selecione pelo menos um serviço para montar seu plano personalizado.');return}
-      const months=root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0'
-      const maintenance=months==='0' ? 'sem manutenção' : `manutenção por ${months} mês(es), com 15% de desconto`
-      const message=encodeURIComponent(`Olá! Quero montar um Plano Personalizado OtimizaHub. Serviços: ${selected.join(', ')}. Manutenção: ${maintenance}. Quero receber a confirmação do investimento e próximos passos.`)
-      ;(event.currentTarget as HTMLAnchorElement).href=`https://wa.me/554196674017?text=${message}`
-    })
+    on(root.querySelector('#custom-plan-submit'),'click',event=>{const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value);if(!selected.length){event.preventDefault();alert('Selecione pelo menos um serviço para montar seu plano personalizado.');return}const months=root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0';const maintenance=months==='0' ? 'sem manutenção' : `manutenção por ${months} mês(es), com 15% de desconto`;const message=encodeURIComponent(`Olá! Quero montar um Plano Personalizado OtimizaHub. Serviços: ${selected.join(', ')}. Manutenção: ${maintenance}. Quero receber a confirmação do investimento e próximos passos.`);(event.currentTarget as HTMLAnchorElement).href=`https://wa.me/554196674017?text=${message}`})
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08})
     root.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
     return ()=>{observer.disconnect();offs.forEach(off=>off())}
