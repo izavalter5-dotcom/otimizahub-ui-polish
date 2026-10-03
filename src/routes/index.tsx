@@ -25,9 +25,7 @@ function Index() {
   const container = useRef<HTMLDivElement>(null)
   const pageMarkup = useMemo(() => {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const doc = new DOMParser().parseFromString(html, 'text/html')
-    ;['#sobre', '#equipe', '#planos'].forEach(selector => doc.querySelector(selector)?.remove())
-    return { __html: doc.body.innerHTML }
+    return { __html: html }
   }, [])
   const [imageReady, setImageReady] = useState(false)
   useEffect(() => {
