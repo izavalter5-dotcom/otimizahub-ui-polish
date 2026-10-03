@@ -3,14 +3,25 @@ import { useEffect, useMemo, useRef } from 'react'
 import rawPage from '../content/otimizahub.html?raw'
 import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
 
+function extractElement(html: string, selector: string) {
+  const id = selector.replace(/^#/, '')
+  const match = html.match(new RegExp(`<([a-z0-9]+)[^>]*\\bid=["']${id}["'][^>]*>[\\s\\S]*?<\\/\\1>`, 'i'))
+  return match?.[0] ?? ''
+}
+
+function extractTag(html: string, tag: string) {
+  return html.match(new RegExp(`<${tag}\\b[^>]*>[\\s\\S]*?<\\/${tag}>`, 'i'))?.[0] ?? ''
+}
+
 function StandalonePage() {
   const container = useRef<HTMLDivElement>(null)
   const markup = useMemo(() => {
-    const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const doc = new DOMParser().parseFromString(html, 'text/html')
-    const header = doc.querySelector('header')?.outerHTML ?? ''
-    const plans = (doc.querySelector('#planos')?.outerHTML ?? '').replaceAll('href="#contato"','href="/#contato"')
-    const footer = doc.querySelector('footer')?.outerHTML ?? ''
+    const html = rawPage
+      .replaceAll('/media/otimizahub-logo-light.webp', goldLogo)
+      .replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
+    const header = extractTag(html, 'header')
+    const plans = extractElement(html, '#planos').replaceAll('href="#contato"', 'href="/#contato"')
+    const footer = extractTag(html, 'footer')
     return { __html: header + plans + footer }
   }, [])
 
