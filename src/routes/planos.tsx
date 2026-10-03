@@ -12,9 +12,9 @@ function StandalonePage() {
   const container = useRef<HTMLDivElement>(null)
   const markup = useMemo(() => {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const header = html.match(/<header\\b[\\s\\S]*?<\\/header>/i)?.[0] ?? ''
+    const header = html.match(/<header\b[\s\S]*?<\/header>/i)?.[0] ?? ''
     const plans = extractSection(html, 'planos').replaceAll('href="#contato"', 'href="/#contato"')
-    const footer = html.match(/<footer\\b[\\s\\S]*?<\\/footer>/i)?.[0] ?? ''
+    const footer = html.match(/<footer\b[\s\S]*?<\/footer>/i)?.[0] ?? ''
     return { __html: header + plans + footer }
   }, [])
 
@@ -33,7 +33,6 @@ function StandalonePage() {
     const menu=root.querySelector('#mobile-menu'), menuBtn=root.querySelector('#menu-btn'), open=root.querySelector('#icon-open'), close=root.querySelector('#icon-close')
     on(menuBtn,'click',()=>{const isOpen=menu?.classList.contains('hidden');menu?.classList.toggle('hidden',!isOpen);open?.classList.toggle('hidden',Boolean(isOpen));close?.classList.toggle('hidden',!isOpen);menuBtn?.setAttribute('aria-expanded',String(Boolean(isOpen)))})
     root.querySelectorAll('#mobile-menu a').forEach(el=>on(el,'click',()=>{menu?.classList.add('hidden');open?.classList.remove('hidden');close?.classList.add('hidden')}))
-    root.querySelectorAll<HTMLElement>('.showcase-tab').forEach(tab=>on(tab,'click',()=>{}))
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el=>on(el,'click',()=>{const select=root.querySelector<HTMLSelectElement>('#servico');if(select&&el.dataset['plano'])select.value=el.dataset['plano']}))
     root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>on(el,'change',()=>{el.closest('.plano-check-label')?.classList.toggle('selected',el.checked);const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value);const months=(root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0');const summary=root.querySelector('#custom-plan-summary');if(summary) summary.textContent=selected.length ? selected.join(' + ')+ (months!=='0' ? ` + manutenção por ${months} mês(es) com 15% de desconto` : ' + sem manutenção') : 'Selecione pelo menos um serviço para montar sua solicitação.'}))
     on(root.querySelector('#custom-plan-months'),'change',()=>root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>el.dispatchEvent(new Event('change'))))
