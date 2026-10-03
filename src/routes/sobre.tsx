@@ -3,15 +3,19 @@ import { useEffect, useMemo, useRef } from 'react'
 import rawPage from '../content/otimizahub.html?raw'
 import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
 
+function extractSection(html: string, id: string) {
+  const match = html.match(new RegExp(`<section\\b[^>]*\\bid=["']${id}["'][^>]*>[\\s\\S]*?<\\/section>`, 'i'))
+  return match?.[0] ?? ''
+}
+
 function StandalonePage() {
   const container = useRef<HTMLDivElement>(null)
   const markup = useMemo(() => {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const doc = new DOMParser().parseFromString(html, 'text/html')
-    const header = doc.querySelector('header')?.outerHTML ?? ''
-    const about = doc.querySelector('#sobre')?.outerHTML ?? ''
-    const team = doc.querySelector('#equipe')?.outerHTML ?? ''
-    const footer = doc.querySelector('footer')?.outerHTML ?? ''
+    const header = html.match(/<header\\b[\\s\\S]*?<\\/header>/i)?.[0] ?? ''
+    const about = extractSection(html, 'sobre')
+    const team = extractSection(html, 'equipe')
+    const footer = html.match(/<footer\\b[\\s\\S]*?<\\/footer>/i)?.[0] ?? ''
     return { __html: header + about + team + footer }
   }, [])
 
