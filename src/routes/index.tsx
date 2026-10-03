@@ -21,6 +21,7 @@ export const Route = createFileRoute('/')({
   component: Index,
 })
 
+// Preview refresh marker
 function Index() {
   const container = useRef<HTMLDivElement>(null)
   const pageMarkup = useMemo(() => {
