@@ -69,7 +69,7 @@ export const Route = createFileRoute('/planos')({
   ssr: false,
   head: () => ({ meta: [
     { title: 'Planos — OtimizaHub' },
-    { name: 'description', content: 'Conheça os planos, serviços e opções personalizadas da OtimizaHub.' },
+    { name: 'description', content: 'Conheça os planos e opções personalizadas da OtimizaHub.' },
   ] }),
   component: StandalonePage,
 })
