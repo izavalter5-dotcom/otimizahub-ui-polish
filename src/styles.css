@@ -182,7 +182,7 @@ body { margin:0 }
 .oh-chart svg { width:100%; height:100% }.oh-chart-months { display:flex; justify-content:space-between; color:var(--oh-soft-dark); font-size:.62rem; margin-top:8px }
 .oh-dashboard-actions>div { display:flex; justify-content:space-between; border-top:1px solid color-mix(in oklch,var(--oh-lilac) 15%,transparent); padding:9px 0; font-size:.73rem; color:var(--oh-body-dark) }.oh-dashboard-actions b { color:var(--oh-white) }
 .oh-dashboard-foot { font-size:.67rem; color:var(--oh-soft-dark); margin-top:14px; line-height:1.5 }
-.oh-page #sobre { background:var(--oh-night)!important; color:var(--oh-white) }.oh-page #sobre h2 { color:var(--oh-white)!important; font:700 clamp(2.5rem,4.5vw,4.7rem)/1.13 "Sora",sans-serif }.oh-page #sobre p.text-muted { color:var(--oh-body-dark)!important }
+.oh-page #sobre { background:var(--oh-paper)!important; color:var(--oh-ink) }.oh-page #sobre h2 { color:var(--oh-ink)!important; font:700 clamp(2.5rem,4.5vw,4.7rem)/1.13 "Sora",sans-serif }.oh-page #sobre p.text-muted { color:var(--oh-muted)!important }
 .oh-about-note { position:relative; background:color-mix(in oklch,var(--oh-card-dark) 80%,var(--oh-violet)); border-radius:8px; padding:clamp(28px,4vw,50px); min-height:390px; display:flex; flex-direction:column; justify-content:center }
 .oh-about-note h3 { font:700 clamp(2rem,3vw,3.1rem)/1.15 "Sora",sans-serif; max-width:440px; margin:28px 0 18px; color:var(--oh-white) }
 .oh-about-note p { font-size:1rem; line-height:1.8; color:var(--oh-body-dark); max-width:440px }.oh-quote-mark { position:absolute; right:40px; top:8px; font:700 8rem Georgia,serif; color:color-mix(in oklch,var(--oh-lilac) 22%,transparent) }
@@ -192,9 +192,9 @@ body { margin:0 }
 .oh-page #equipe .team-profile-card { background:var(--oh-card-dark)!important; border-color:color-mix(in oklch,var(--oh-lilac) 20%,transparent)!important; border-radius:8px!important }
 .oh-page #equipe .team-profile-card h3 { color:var(--oh-white)!important }.oh-page #equipe .team-profile-card p.text-muted { color:var(--oh-body-dark)!important }
 .oh-page #equipe .team-profile-card { grid-template-columns:minmax(0,44%) minmax(0,56%); min-height:350px }.oh-page #equipe .team-profile-card>div:first-child { height:100%!important; min-height:350px!important; margin:0!important; border-radius:0!important }.oh-page #equipe .team-profile-card img { height:100%!important; min-height:350px!important }.oh-page #equipe .team-profile-card>div:last-child { display:flex; flex-direction:column; justify-content:center }.oh-page #equipe .team-profile-card p.text-muted { font-size:.82rem; line-height:1.62 }
-.oh-page #parcerias { background:var(--oh-night)!important; padding:100px 0 }.oh-partner-statement { display:flex; justify-content:space-between; align-items:center; gap:7% }.oh-partner-statement>div:first-child { max-width:850px }.oh-partner-statement h2 { color:var(--oh-white); max-width:860px }.oh-partner-seal { flex:0 0 130px; height:130px; border:1px solid color-mix(in oklch,var(--oh-gold) 55%,transparent); border-radius:50%; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:center; color:var(--oh-gold); font-size:1.5rem; text-align:center }.oh-partner-seal span { font:600 .55rem/1.5 "IBM Plex Mono",monospace }
+.oh-page #parcerias { background:var(--oh-paper)!important; padding:100px 0 }.oh-partner-statement { display:flex; justify-content:space-between; align-items:center; gap:7% }.oh-partner-statement>div:first-child { max-width:850px }.oh-partner-statement h2 { color:var(--oh-ink); max-width:860px }.oh-partner-seal { flex:0 0 130px; height:130px; border:1px solid color-mix(in oklch,var(--oh-gold) 55%,transparent); border-radius:50%; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:center; color:var(--oh-gold); font-size:1.5rem; text-align:center }.oh-partner-seal span { font:600 .55rem/1.5 "IBM Plex Mono",monospace }
 .oh-page #comparativo h2,.oh-page #como-funciona h2,.oh-page #planos>div>div:first-child h2 { font:700 clamp(2.55rem,4.8vw,5rem)/1.1 "Sora",sans-serif; letter-spacing:0 }
-.oh-page #como-funciona { background:var(--oh-night)!important }.oh-page #como-funciona .reveal h2 { color:var(--oh-white)!important }.oh-page #como-funciona .reveal>p { color:var(--oh-body-dark)!important }.oh-page #como-funciona .reveal.text-center { text-align:left; max-width:900px; margin-left:0 }
+.oh-page #como-funciona { background:var(--oh-paper)!important }.oh-page #como-funciona .reveal h2 { color:var(--oh-ink)!important }.oh-page #como-funciona .reveal>p { color:var(--oh-muted)!important }.oh-page #como-funciona .reveal.text-center { text-align:left; max-width:900px; margin-left:0 }
 .oh-process-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:50px }.oh-process-card { min-height:275px; background:var(--oh-card-dark); border:1px solid color-mix(in oklch,var(--oh-lilac) 22%,transparent); border-radius:7px; padding:25px 22px }.oh-process-card>span { color:var(--oh-lilac); font:700 .73rem "IBM Plex Mono",monospace }.oh-process-card i { display:grid; place-items:center; width:44px; height:44px; border-radius:7px; background:var(--oh-soft); color:var(--oh-violet); font-size:1.3rem; font-style:normal; margin:26px 0 19px }.oh-process-card h3 { color:var(--oh-white); font:700 .95rem/1.35 "Sora",sans-serif }.oh-process-card p { color:var(--oh-body-dark); margin-top:12px; font-size:.82rem; line-height:1.65 }
 .oh-page #planos .plan-card { background:var(--oh-white)!important; color:var(--oh-ink)!important; border:1px solid var(--oh-border)!important; border-radius:8px!important; box-shadow:none!important }.oh-page #planos .plan-card p,.oh-page #planos .plan-card h3,.oh-page #planos .plan-card strong,.oh-page #planos .plan-card summary { color:var(--oh-ink)!important }.oh-page #planos .plan-card .text-muted,.oh-page #planos .plan-card .text-slate-300,.oh-page #planos .plan-card .text-slate-400,.oh-page #planos .plan-card .text-navy\/80,.oh-page #planos .plan-card .text-navy\/70 { color:var(--oh-muted)!important }
 .oh-page #planos .plan-card .plan-includes { background:var(--oh-soft)!important; color:var(--oh-ink)!important; border-color:var(--oh-violet) }.oh-page #planos .plan-card .plan-includes strong { color:var(--oh-ink)!important }.oh-page #planos .plan-card .plan-feature-no { color:var(--oh-muted)!important }
@@ -223,3 +223,23 @@ body { margin:0 }
 .oh-page.theme-dark .oh-ai-head em { color:var(--oh-lilac) }
 .oh-page.theme-dark .oh-ai-step > span { color:var(--oh-lilac) }
 .oh-page.theme-dark .oh-ai-symbol { background:color-mix(in oklch,var(--oh-lilac) 18%,transparent); color:var(--oh-lilac) }
+
+
+/* Final light/dark section contrast normalization */
+.oh-page #equipe .team-profile-card { background:var(--oh-white)!important; color:var(--oh-ink)!important }
+.oh-page #equipe .team-profile-card h3 { color:var(--oh-ink)!important }
+.oh-page #equipe .team-profile-card p.text-muted { color:var(--oh-muted)!important }
+.oh-page.theme-dark #sobre { background:var(--oh-night)!important; color:var(--oh-white) }
+.oh-page.theme-dark #sobre h2 { color:var(--oh-white)!important }
+.oh-page.theme-dark #sobre p.text-muted { color:var(--oh-body-dark)!important }
+.oh-page.theme-dark #equipe { background:var(--oh-night)!important; color:var(--oh-white) }
+.oh-page.theme-dark #equipe h2 { color:var(--oh-white)!important }
+.oh-page.theme-dark #equipe>.max-w-6xl>div:first-child p { color:var(--oh-body-dark)!important }
+.oh-page.theme-dark #equipe .team-profile-card { background:var(--oh-card-dark)!important; color:var(--oh-white)!important }
+.oh-page.theme-dark #equipe .team-profile-card h3 { color:var(--oh-white)!important }
+.oh-page.theme-dark #equipe .team-profile-card p.text-muted { color:var(--oh-body-dark)!important }
+.oh-page.theme-dark #parcerias { background:var(--oh-night)!important }
+.oh-page.theme-dark .oh-partner-statement h2 { color:var(--oh-white) }
+.oh-page.theme-dark #como-funciona { background:var(--oh-night)!important }
+.oh-page.theme-dark #como-funciona .reveal h2 { color:var(--oh-white)!important }
+.oh-page.theme-dark #como-funciona .reveal>p { color:var(--oh-body-dark)!important }
