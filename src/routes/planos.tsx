@@ -9,7 +9,7 @@ function StandalonePage() {
     const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
     const doc = new DOMParser().parseFromString(html, 'text/html')
     const header = doc.querySelector('header')?.outerHTML ?? ''
-    const plans = doc.querySelector('#planos')?.outerHTML ?? ''
+    const plans = (doc.querySelector('#planos')?.outerHTML ?? '').replaceAll('href="#contato"','href="/#contato"')
     const footer = doc.querySelector('footer')?.outerHTML ?? ''
     return { __html: header + plans + footer }
   }, [])
