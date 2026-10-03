@@ -23,7 +23,12 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const container = useRef<HTMLDivElement>(null)
-  const pageMarkup = useMemo(() => ({ __html: rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo) }), [])
+  const pageMarkup = useMemo(() => {
+    const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
+    const doc = new DOMParser().parseFromString(html, 'text/html')
+    ;['#sobre', '#equipe', '#planos'].forEach(selector => doc.querySelector(selector)?.remove())
+    return { __html: doc.body.innerHTML }
+  }, [])
   const [imageReady, setImageReady] = useState(false)
   useEffect(() => {
     const root = container.current
