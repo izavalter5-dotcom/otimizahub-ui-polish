@@ -322,3 +322,22 @@ body { margin:0 }
 @media(max-width:767px){
   .oh-page #equipe .team-profile-card p.text-muted{font-size:.78rem;line-height:1.5}
 }
+
+/* Higher-specificity dark-mode corrections for legacy utility selectors. */
+.oh-page.theme-dark .bg-white:not(.plan-card),
+.oh-page.theme-dark .bg-mist:not(#equipe):not(#como-funciona){background-color:var(--oh-dark-bg)!important}
+.oh-page.theme-dark .bg-white:not(.plan-card) .text-navy,
+.oh-page.theme-dark .bg-white:not(.plan-card) .text-ink,
+.oh-page.theme-dark .bg-white:not(.plan-card) h1,
+.oh-page.theme-dark .bg-white:not(.plan-card) h2,
+.oh-page.theme-dark .bg-white:not(.plan-card) h3,
+.oh-page.theme-dark .bg-white:not(.plan-card) h4,
+.oh-page.theme-dark .bg-white:not(.plan-card) p,
+.oh-page.theme-dark .bg-white:not(.plan-card) li,
+.oh-page.theme-dark .bg-white:not(.plan-card) label{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .bg-white:not(.plan-card) .text-muted,
+.oh-page.theme-dark .bg-white:not(.plan-card) .text-slate-300,
+.oh-page.theme-dark .bg-white:not(.plan-card) .text-slate-400{color:var(--oh-dark-muted)!important}
+.oh-page.theme-dark .comparison-table-wrap{background:var(--oh-dark-surface)!important;border-color:var(--oh-dark-border)!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head)>div{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-without{color:var(--oh-dark-muted)!important}
