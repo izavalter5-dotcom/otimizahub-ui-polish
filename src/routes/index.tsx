@@ -24,7 +24,10 @@ export const Route = createFileRoute('/')({
 function Index() {
   const container = useRef<HTMLDivElement>(null)
   const pageMarkup = useMemo(() => {
-    const html = rawPage.replaceAll('/media/otimizahub-logo-light.webp', goldLogo).replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
+    const html = rawPage
+      .replaceAll('/media/otimizahub-logo-light.webp', goldLogo)
+      .replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
+      .replace(/<section\b[^>]*\bid="(?:sobre|equipe|planos)"[^>]*>[\s\S]*?<\/section>/gi, '')
     return { __html: html }
   }, [])
   const [imageReady, setImageReady] = useState(false)
