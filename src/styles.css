@@ -244,3 +244,9 @@ body { margin:0 }
 .oh-page.theme-dark #como-funciona .reveal h2 { color:var(--oh-white)!important }
 .oh-page.theme-dark #como-funciona .reveal>p { color:var(--oh-body-dark)!important }
 
+
+/* Ensure the about note remains readable when dark mode is enabled */
+.oh-page.theme-dark .oh-about-note .oh-eyebrow { color:var(--oh-lilac)!important }
+.oh-page.theme-dark .oh-about-note h3 { color:var(--oh-white)!important }
+.oh-page.theme-dark .oh-about-note p { color:color-mix(in oklch,var(--oh-white) 82%,transparent)!important }
+.oh-page.theme-dark .oh-about-note-foot { color:var(--oh-white)!important }
