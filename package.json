@@ -88,5 +88,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "overrides": {
+    "rolldown": "1.2.1"
   }
 }
