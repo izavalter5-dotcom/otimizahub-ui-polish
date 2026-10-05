@@ -629,3 +629,34 @@ body { margin:0 }
 @media(max-width:767px){.oh-process-grid{grid-template-columns:1fr;gap:26px;margin-top:38px}.oh-process-card{min-height:0;padding:0 2px}.oh-process-visual{height:135px}.oh-process-card:last-child .oh-process-line{display:none}.oh-process-copy h3{font-size:.92rem}.oh-process-copy p{font-size:.72rem}.oh-process-step>span:first-child{width:32px;height:32px;font-size:.62rem}}
 
 @media(max-width:767px){.oh-ai-head{grid-template-columns:1fr;gap:20px}.oh-ai-flow-grid{grid-template-columns:1fr;gap:28px}.oh-ai-flow-grid:before{display:none}.oh-ai-flow-step,.oh-ai-flow-step:not(:first-child){padding:0;min-height:0;border-left:0}.oh-ai-flow-step:not(:last-child){padding-bottom:28px;border-bottom:1px solid var(--oh-border)}.oh-ai-flow-top{height:42px}.oh-ai-flow-top>span{width:42px;height:42px}.oh-ai-visual{height:112px}}
+
+/* Real service showcase */
+.oh-page .showcase-guide{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;background:var(--oh-night);color:var(--oh-white);border-bottom:1px solid color-mix(in oklch,var(--oh-lilac) 22%,transparent)}
+.oh-page .showcase-guide span{font:700 .6rem "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--oh-lilac)}
+.oh-page .showcase-guide small{font-size:.72rem;color:color-mix(in oklch,var(--oh-white) 68%,transparent)}
+.oh-page .showcase-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--oh-card-dark);border-bottom:1px solid color-mix(in oklch,var(--oh-lilac) 20%,transparent)}
+.oh-page .showcase-tab{position:relative;min-height:76px;display:grid;grid-template-columns:34px 1fr 18px;align-items:center;gap:10px;padding:13px 15px;text-align:left;border:0;border-right:1px solid color-mix(in oklch,var(--oh-lilac) 16%,transparent);background:transparent;color:var(--oh-white);cursor:pointer;transition:background .2s,transform .2s}
+.oh-page .showcase-tab:last-child{border-right:0}
+.oh-page .showcase-tab:hover{background:color-mix(in oklch,var(--oh-violet) 12%,var(--oh-card-dark))}
+.oh-page .showcase-tab.active{background:color-mix(in oklch,var(--oh-violet) 22%,var(--oh-card-dark))}
+.oh-page .showcase-tab.active:after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;background:linear-gradient(90deg,var(--oh-violet),var(--oh-lilac))}
+.oh-page .showcase-tab-number{display:grid;place-items:center;width:30px;height:30px;border:1px solid color-mix(in oklch,var(--oh-lilac) 45%,transparent);border-radius:50%;color:var(--oh-lilac);font:700 .58rem "IBM Plex Mono",monospace}
+.oh-page .showcase-tab>span:nth-child(2){display:flex;flex-direction:column;gap:4px;min-width:0}
+.oh-page .showcase-tab strong{font:700 .72rem "Sora",sans-serif;white-space:nowrap}
+.oh-page .showcase-tab small{font-size:.58rem;color:color-mix(in oklch,var(--oh-white) 58%,transparent)}
+.oh-page .showcase-tab>b{color:var(--oh-lilac);font-size:.9rem;opacity:.55;transition:transform .2s,opacity .2s}
+.oh-page .showcase-tab.active>b{opacity:1;transform:translateX(3px)}
+.oh-page .showcase-preview{background:var(--oh-night)}
+.oh-page .showcase-panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:42px;padding:36px}
+.oh-page .showcase-real-frame{position:relative;min-height:360px;border:1px solid color-mix(in oklch,var(--oh-lilac) 22%,transparent);border-radius:6px;background:#120d19;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.oh-page .showcase-real-image{display:block;width:100%;height:360px;object-fit:cover;object-position:center;max-width:none}
+.oh-page .showcase-real-image-meta{object-fit:contain;background:#fff;padding:10px}
+.oh-page .showcase-real-image-instagram{object-fit:contain;background:#080808;padding:0 16%;height:390px}
+.oh-page .showcase-real-frame>span{position:absolute;left:14px;bottom:12px;padding:6px 8px;border-radius:3px;background:color-mix(in oklch,var(--oh-night) 86%,transparent);color:var(--oh-lilac);font:700 .5rem "IBM Plex Mono",monospace;letter-spacing:.08em}
+.oh-page .showcase-copy{align-self:center}
+.oh-page .showcase-copy .text-brand{color:var(--oh-lilac)!important}
+@media(max-width:900px){.oh-page .showcase-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.oh-page .showcase-tab:nth-child(2){border-right:0}.oh-page .showcase-panel{grid-template-columns:1fr;gap:24px}.oh-page .showcase-real-frame,.oh-page .showcase-real-image{height:320px;min-height:320px}}
+@media(max-width:767px){.oh-page .showcase-guide{align-items:flex-start;flex-direction:column;gap:5px;padding:12px 15px}.oh-page .showcase-tabs{grid-template-columns:1fr 1fr}.oh-page .showcase-tab{min-height:70px;padding:11px 10px;grid-template-columns:29px 1fr 12px}.oh-page .showcase-tab-number{width:27px;height:27px}.oh-page .showcase-tab strong{font-size:.62rem}.oh-page .showcase-tab small{font-size:.51rem}.oh-page .showcase-panel{padding:18px 15px 24px}.oh-page .showcase-real-frame,.oh-page .showcase-real-image{height:260px;min-height:260px}.oh-page .showcase-real-image-instagram{height:300px;min-height:300px;padding:0 18%}.oh-page .showcase-copy h3{font-size:1.35rem!important}.oh-page .showcase-copy p{font-size:.78rem;line-height:1.55}}
+/* Prevent any real food photos from being stretched if a menu card is reused elsewhere. */
+.oh-page .product-photo{background-image:none!important;overflow:hidden;height:105px!important}
+.oh-page .product-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
