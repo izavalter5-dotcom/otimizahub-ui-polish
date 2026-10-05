@@ -532,3 +532,95 @@ body { margin:0 }
   .oh-page #planos .plan-feature{font-size:.66rem!important}
   .oh-page #planos .custom-plan-builder{padding:.8rem!important}
 }
+
+
+/* Dark-mode legibility and mobile-first density pass */
+.oh-page.theme-dark #planos .plan-card,
+.oh-page.theme-dark #planos .plan-card *,
+.oh-page.theme-dark #planos .plan-intro-line,
+.oh-page.theme-dark #planos .plan-intro-line *{
+  color:var(--oh-dark-ink);
+}
+.oh-page.theme-dark #planos .plan-card .text-muted,
+.oh-page.theme-dark #planos .plan-card .text-muted *,
+.oh-page.theme-dark #planos .plan-card .text-sm.text-muted{
+  color:var(--oh-dark-muted);
+}
+.oh-page.theme-dark #planos .plan-card .text-brand,
+.oh-page.theme-dark #planos .plan-card .text-brand *,
+.oh-page.theme-dark #planos .plan-card .text-brand2,
+.oh-page.theme-dark #planos .plan-card .text-brand2 *{
+  color:var(--oh-brand-purple-light);
+}
+.oh-page.theme-dark #planos .plan-feature svg,
+.oh-page.theme-dark #planos .plan-card svg{
+  color:var(--oh-brand-purple-light);
+  stroke:currentColor;
+}
+.oh-page.theme-dark #planos .custom-service-card{
+  color:var(--oh-dark-ink);
+}
+.oh-page.theme-dark #planos .custom-service-card .text-muted,
+.oh-page.theme-dark #planos .custom-service-card .text-muted *,
+.oh-page.theme-dark #planos .custom-service-card small{
+  color:var(--oh-dark-muted);
+}
+
+@media(max-width:767px){
+  html{font-size:14px}
+  .oh-page{font-size:.9rem}
+  .oh-page .max-w-6xl{max-width:100%!important}
+  .oh-page section{scroll-margin-top:72px}
+  .oh-page header{min-height:58px!important}
+  .oh-page header .logo{max-width:132px!important}
+  .oh-page .oh-hero{
+    min-height:560px;
+    padding:78px 16px 58px;
+  }
+  .oh-page .oh-hero h1{font-size:clamp(1.85rem,8.8vw,2.5rem)!important;line-height:1.05}
+  .oh-page .oh-hero p{font-size:.78rem!important;line-height:1.5}
+  .oh-page .oh-hero-actions{margin-top:18px;gap:10px}
+  .oh-page .oh-primary-link{padding:10px 12px;font-size:.7rem}
+  .oh-page .oh-text-link{font-size:.68rem}
+  .oh-page .oh-hero-index{font-size:.5rem}
+  .oh-page #planos{padding-top:36px!important;padding-bottom:42px!important}
+  .oh-page #planos>.max-w-6xl{padding-left:12px!important;padding-right:12px!important}
+  .oh-page #planos>.max-w-6xl>div:first-child h2{font-size:1.8rem!important;line-height:1.08}
+  .oh-page #planos>.max-w-6xl>div:first-child p{font-size:.75rem!important;line-height:1.45}
+  .oh-page #planos .plan-intro-line{margin-top:25px!important}
+  .oh-page #planos .plan-card{padding:.72rem!important}
+  .oh-page #planos .plan-card h3{font-size:.88rem!important}
+  .oh-page #planos .plan-card>p.text-sm{font-size:.68rem!important;line-height:1.4}
+  .oh-page #planos .plan-card>p.font-display.text-3xl{font-size:1.55rem!important;margin-top:.65rem!important}
+  .oh-page #planos .plan-card>p.font-display.text-xl{font-size:.82rem!important}
+  .oh-page #planos .plan-includes{margin-top:.7rem!important;padding:.58rem .65rem!important}
+  .oh-page #planos .plan-feature{font-size:.61rem!important;line-height:1.3!important}
+  .oh-page #planos .plan-card .plano-cta{margin-top:.7rem!important;padding:.52rem .65rem!important;font-size:.64rem!important}
+  .oh-page #planos .custom-plan-builder{padding:.7rem!important}
+  .oh-page #planos .custom-plan-builder>.grid{gap:.7rem!important}
+  .oh-page #planos .custom-plan-builder h3{font-size:1rem!important}
+  .oh-page #planos .custom-plan-builder>div>p{font-size:.68rem!important}
+  .oh-page #planos .custom-service-card{padding:.62rem!important}
+  .oh-page #planos .custom-service-card strong{font-size:.72rem!important}
+  .oh-page #planos .custom-service-card label{font-size:.66rem!important}
+  .oh-page #planos .custom-service-card small,
+  .oh-page #planos .custom-service-card p{font-size:.59rem!important}
+  .oh-page #planos #custom-plan-total{padding:.72rem!important}
+  .oh-page #planos #custom-plan-total strong{font-size:1.6rem!important}
+  .custom-plan-result-row{font-size:.63rem}
+  .custom-plan-result-row small{font-size:.55rem}
+  .custom-plan-summary-line,
+  .custom-plan-summary-discount{font-size:.6rem}
+  .custom-plan-summary-total{font-size:.72rem}
+}
+@media(max-width:420px){
+  .oh-page .oh-hero{min-height:520px;padding:70px 13px 48px}
+  .oh-page .oh-hero h1{font-size:1.75rem!important}
+  .oh-page .oh-hero p{font-size:.72rem!important}
+  .oh-page #planos>.max-w-6xl{padding-left:10px!important;padding-right:10px!important}
+  .oh-page #planos>.max-w-6xl>div:first-child h2{font-size:1.65rem!important}
+  .oh-page #planos .plan-card{padding:.6rem!important}
+  .oh-page #planos .plan-card h3{font-size:.82rem!important}
+  .oh-page #planos .plan-feature{font-size:.57rem!important}
+  .oh-page #planos .custom-service-card{padding:.55rem!important}
+}
