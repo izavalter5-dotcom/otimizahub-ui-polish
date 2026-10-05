@@ -97,35 +97,63 @@ function Index() {
         panel.classList.toggle('active', active); panel.hidden = !active
       })
     }))
-    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(input => on(input, 'change', () => updateCustomPlan()))
-    on(query('#custom-plan-months'), 'change', () => updateCustomPlan())
-
     const updateCustomPlan = () => {
       const selected = Array.from(root.querySelectorAll<HTMLInputElement>('.custom-plan-service')).filter(input => input.checked)
-      const months = Number(query<HTMLSelectElement>('#custom-plan-months')?.value || 0)
+      const money = (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      const totalEl = query<HTMLElement>('#custom-plan-total strong')
       const items = query<HTMLElement>('#custom-plan-items')
       const summary = query<HTMLElement>('#custom-plan-summary')
       const maintenance = query<HTMLElement>('#custom-plan-maintenance')
-      const money = (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-      let subtotal = 0
+      let total = 0
       let needsQuote = false
-      if (items) items.innerHTML = selected.length ? selected.map(input => {
+      const rows: string[] = []
+
+      root.querySelectorAll<HTMLElement>('.custom-plan-months-wrap').forEach(wrap => {
+        const group = wrap.dataset['monthsFor']
+        const maintenanceInput = root.querySelector<HTMLInputElement>(`.custom-plan-service[data-kind="maintenance"][data-group="${group}"]`)
+        const select = wrap.querySelector<HTMLSelectElement>('select')
+        wrap.classList.toggle('hidden', !maintenanceInput?.checked)
+        if (maintenanceInput?.checked && select && select.value === '0') select.value = '1'
+      })
+
+      selected.forEach(input => {
+        const kind = input.dataset['kind'] || 'setup'
         const price = input.dataset['price'] ? Number(input.dataset['price']) : null
-        if (price === null) { needsQuote = true; return '<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>Sob consulta</strong></div>' }
-        subtotal += price
-        return '<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>'+money(price)+'</strong></div>'
-      }).join('') : ''
-      const maintenanceBase = months > 0 ? 45 * months : 0
-      const maintenanceDiscounted = maintenanceBase * 0.85
-      const total = subtotal + maintenanceDiscounted
+        if (price === null) {
+          needsQuote = true
+          rows.push('<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>Sob consulta</strong></div>')
+          return
+        }
+        if (kind === 'maintenance') {
+          const group = input.dataset['group'] || ''
+          const select = root.querySelector<HTMLSelectElement>(`select[data-months-group="${group}"]`)
+          const months = Number(select?.value || 0)
+          const discounted = price * months * 0.85
+          if (months > 0) {
+            total += discounted
+            rows.push('<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+' · '+months+' mês(es)</span><strong>'+money(discounted)+'</strong></div>')
+          }
+        } else if (kind === 'monthly') {
+          total += price
+          rows.push('<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>'+money(price)+'/mês</strong></div>')
+        } else {
+          total += price
+          rows.push('<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>'+money(price)+'</strong></div>')
+        }
+      })
+
+      if (totalEl) totalEl.textContent = money(total)
+      if (items) items.innerHTML = rows.length ? rows.join('') : ''
       if (!selected.length) {
         if (summary) summary.textContent = 'Selecione pelo menos um serviço para montar sua solicitação.'
         if (maintenance) maintenance.textContent = ''
       } else {
-        if (summary) summary.innerHTML = '<strong>Total estimado: '+money(total)+'</strong>'+ (needsQuote ? ' <span class="text-xs text-muted">+ valor da página de vendas, sob consulta</span>' : '')
-        if (maintenance) maintenance.textContent = months > 0 ? 'Manutenção: '+money(45)+' × '+months+' mês(es), com 15% de desconto = '+money(maintenanceDiscounted)+'.' : 'Sem manutenção selecionada.'
+        if (summary) summary.innerHTML = '<strong>Total estimado: '+money(total)+'</strong>' + (needsQuote ? ' <span class="text-xs text-muted">+ serviço com valor sob consulta</span>' : '')
+        if (maintenance) maintenance.textContent = selected.some(input => input.dataset['kind'] === 'maintenance') ? 'Manutenções calculadas com 15% de desconto para o período escolhido.' : ''
       }
     }
+    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(input => on(input, 'change', updateCustomPlan))
+    root.querySelectorAll<HTMLSelectElement>('.custom-plan-months').forEach(select => on(select, 'change', updateCustomPlan))
     updateCustomPlan()
 
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el => on(el, 'click', () => {
