@@ -28,12 +28,20 @@ function Index() {
     const html = rawPage
       .replaceAll('/media/otimizahub-logo-light.webp', goldLogo)
       .replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    return { __html: html }
+    const withoutPlans = html.replace(/<section[^>]*\bid=["']planos["'][^>]*>[\\s\\S]*?<\\/section>/i, '')
+    return { __html: withoutPlans }
   }, [])
   const [imageReady, setImageReady] = useState(false)
   useEffect(() => {
     const root = container.current
     if (!root) return
+    const scrollToHash = () => {
+      const id = window.location.hash.replace(/^#/, '')
+      if (!id) return
+      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+    }
+    scrollToHash()
+    window.addEventListener('hashchange', scrollToHash)
     const heroPhoto = root.querySelector<HTMLImageElement>('.oh-hero-media img')
     if (heroPhoto && Math.random() < .5) heroPhoto.src = workspaceImage
     const contactPhoto = root.querySelector<HTMLImageElement>('.oh-contact-media img')
@@ -101,7 +109,7 @@ function Index() {
       try { localStorage.setItem('otimizahub-cookie-consent', 'accepted') } catch { /* storage may be blocked */ }
       banner?.remove()
     })
-    return () => { observer.disconnect(); events.forEach(off => off()) }
+    return () => { observer.disconnect(); events.forEach(off => off()); window.removeEventListener('hashchange', scrollToHash) }
   }, [])
   return <div ref={container} className="oh-page" data-images-ready={imageReady ? 'true' : undefined} dangerouslySetInnerHTML={pageMarkup} />
 }
