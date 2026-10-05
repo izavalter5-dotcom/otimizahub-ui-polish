@@ -44,22 +44,81 @@ function StandalonePage() {
     root.querySelectorAll('#mobile-menu a').forEach(el=>on(el,'click',()=>{menu?.classList.add('hidden');open?.classList.remove('hidden');close?.classList.add('hidden')}))
     root.querySelectorAll<HTMLElement>('.showcase-tab').forEach(tab=>on(tab,'click',()=>{}))
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el=>on(el,'click',()=>{const select=root.querySelector<HTMLSelectElement>('#servico');if(select&&el.dataset['plano'])select.value=el.dataset['plano']}))
-    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>on(el,'change',()=>{
-      el.closest('.plano-check-label')?.classList.toggle('selected',el.checked)
-      const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value)
-      const months=(root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0')
-      const summary=root.querySelector('#custom-plan-summary')
-      if(summary) summary.textContent=selected.length ? selected.join(' + ')+ (months!=='0' ? ` + manutenção por ${months} mês(es) com 15% de desconto` : ' + sem manutenção') : 'Selecione pelo menos um serviço para montar sua solicitação.'
-    }))
-    on(root.querySelector('#custom-plan-months'),'change',()=>root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(el=>el.dispatchEvent(new Event('change'))))
-    on(root.querySelector('#custom-plan-submit'),'click',event=>{
-      const selected=[...root.querySelectorAll<HTMLInputElement>('.custom-plan-service:checked')].map(item=>item.value)
-      if(!selected.length){event.preventDefault();alert('Selecione pelo menos um serviço para montar seu plano personalizado.');return}
-      const months=root.querySelector<HTMLSelectElement>('#custom-plan-months')?.value ?? '0'
-      const maintenance=months==='0' ? 'sem manutenção' : `manutenção por ${months} mês(es), com 15% de desconto`
-      const message=encodeURIComponent(`Olá! Quero montar um Plano Personalizado OtimizaHub. Serviços: ${selected.join(', ')}. Manutenção: ${maintenance}. Quero receber a confirmação do investimento e próximos passos.`)
-      ;(event.currentTarget as HTMLAnchorElement).href=`https://wa.me/554196674017?text=${message}`
+    const money = (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    const updateCustomPlan = () => {
+      const inputs = Array.from(root.querySelectorAll<HTMLInputElement>('.custom-plan-service'))
+      const selected = inputs.filter(input => input.checked)
+      const totalEl = root.querySelector<HTMLElement>('#custom-plan-total strong')
+      const itemsEl = root.querySelector<HTMLElement>('#custom-plan-items')
+      const summary = root.querySelector<HTMLElement>('#custom-plan-summary')
+      const maintenanceNote = root.querySelector<HTMLElement>('#custom-plan-maintenance')
+      let total = 0
+      let hasQuote = false
+      const rows: string[] = []
+
+      root.querySelectorAll<HTMLElement>('.custom-plan-months-wrap').forEach(wrap => {
+        const group = wrap.dataset['monthsFor'] || ''
+        const maintenanceInput = root.querySelector<HTMLInputElement>(`.custom-plan-service[data-kind="maintenance"][data-group="${group}"]`)
+        const select = wrap.querySelector<HTMLSelectElement>('select')
+        const visible = Boolean(maintenanceInput?.checked)
+        wrap.classList.toggle('hidden', !visible)
+        if (visible && select && select.value === '0') select.value = '1'
+      })
+
+      selected.forEach(input => {
+        const kind = input.dataset['kind'] || 'setup'
+        const rawPrice = input.dataset['price'] || ''
+        const price = rawPrice === '' ? null : Number(rawPrice)
+
+        if (price === null || Number.isNaN(price)) {
+          hasQuote = true
+          rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>Sob consulta</strong></div>`)
+          return
+        }
+
+        if (kind === 'maintenance') {
+          const group = input.dataset['group'] || ''
+          const select = root.querySelector<HTMLSelectElement>(`select[data-months-group="${group}"]`)
+          const months = Number(select?.value || 0)
+          if (months > 0) {
+            const maintenanceTotal = price * months * 0.85
+            total += maintenanceTotal
+            rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value} · ${months} mês(es)</span><strong>${money(maintenanceTotal)}</strong></div>`)
+          }
+          return
+        }
+
+        if (kind === 'monthly') {
+          total += price
+          rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>${money(price)}/mês</strong></div>`)
+          return
+        }
+
+        total += price
+        rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>${money(price)}</strong></div>`)
+      })
+
+      if (totalEl) totalEl.textContent = money(total)
+      if (itemsEl) itemsEl.innerHTML = rows.length ? rows.join('') : '<p class="text-xs text-muted">Nenhum serviço selecionado.</p>'
+      if (summary) {
+        summary.innerHTML = selected.length
+          ? `<strong>Total estimado: ${money(total)}</strong>${hasQuote ? ' <span class="text-xs text-muted">+ serviço sob consulta</span>' : ''}`
+          : 'Selecione pelo menos um serviço para montar sua solicitação.'
+      }
+      if (maintenanceNote) {
+        maintenanceNote.textContent = selected.some(input => input.dataset['kind'] === 'maintenance')
+          ? 'Cada gestão mensal é calculada separadamente. Para 2 ou 3 meses, aplica-se 15% de desconto ao período.'
+          : ''
+      }
+    }
+
+    // Event delegation: funciona mesmo se a seção for re-renderizada pelo preview.
+    on(root, 'change', (event) => {
+      const target = event.target as HTMLElement | null
+      if (target?.matches('.custom-plan-service, .custom-plan-months')) updateCustomPlan()
     })
+    updateCustomPlan()
+
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08})
     root.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
     return ()=>{observer.disconnect();offs.forEach(off=>off())}
