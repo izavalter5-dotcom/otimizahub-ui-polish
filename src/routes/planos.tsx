@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useRef } from 'react'
 import rawPage from '../content/otimizahub.html?raw'
 import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
+import plansHeroImage from '../assets/hero-workspace.jpg'
 
 function extractElement(html: string, selector: string) {
   const id = selector.replace(/^#/, '')
@@ -22,7 +23,8 @@ function StandalonePage() {
     const header = extractTag(html, 'header')
     const plans = extractElement(html, '#planos').replaceAll('href="#contato"', 'href="/#contato"')
     const footer = extractTag(html, 'footer')
-    return { __html: header + plans + footer }
+    const hero = `<section class="oh-plans-hero"><img src="${plansHeroImage}" alt="Ambiente profissional de trabalho da OtimizaHub"/><div class="oh-plans-hero-shade"></div><div class="oh-plans-hero-content"><span class="oh-kicker"><span class="oh-kicker-line"></span> SOLUÇÕES PARA CRESCER</span><h1>Serviços pensados para dar <em>visibilidade ao seu negócio.</em></h1><p>Escolha a estrutura que faz sentido para o momento da sua empresa, com clareza sobre o que está incluído e sem complicação.</p></div></section>`
+    return { __html: header + hero + plans + footer }
   }, [])
 
   useEffect(() => {
