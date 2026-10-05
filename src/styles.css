@@ -380,6 +380,13 @@ body { margin:0 }
   color:var(--oh-brand-purple-light)!important;
 }
 
+/* Custom plan builder: service-level maintenance controls */
+.custom-service-card{background:var(--oh-white,#fff);transition:border-color .2s,box-shadow .2s}
+.custom-service-card:has(input:checked){border-color:var(--oh-brand-purple,#6f2dbd)}
+.oh-page.theme-dark .custom-service-card{background:var(--oh-dark-surface);border-color:var(--oh-dark-border)}
+.oh-page.theme-dark .custom-service-card strong,.oh-page.theme-dark .custom-service-card label,.oh-page.theme-dark #custom-plan-total strong{color:var(--oh-dark-ink)!important}
+.oh-page.theme-dark #custom-plan-total{background:var(--oh-dark-surface-2)!important;border-color:var(--oh-dark-border)!important}
+
 /* Plans page hero */
 .oh-plans-hero{min-height:clamp(430px,62vh,650px);position:relative;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:var(--oh-night);color:var(--oh-white);padding:clamp(120px,15vw,180px) max(5vw,24px) clamp(55px,8vw,90px)}
 .oh-plans-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;z-index:-2}
