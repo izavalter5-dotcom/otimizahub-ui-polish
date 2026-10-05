@@ -97,6 +97,37 @@ function Index() {
         panel.classList.toggle('active', active); panel.hidden = !active
       })
     }))
+    root.querySelectorAll<HTMLInputElement>('.custom-plan-service').forEach(input => on(input, 'change', () => updateCustomPlan()))
+    on(query('#custom-plan-months'), 'change', () => updateCustomPlan())
+
+    const updateCustomPlan = () => {
+      const selected = Array.from(root.querySelectorAll<HTMLInputElement>('.custom-plan-service')).filter(input => input.checked)
+      const months = Number(query<HTMLSelectElement>('#custom-plan-months')?.value || 0)
+      const items = query<HTMLElement>('#custom-plan-items')
+      const summary = query<HTMLElement>('#custom-plan-summary')
+      const maintenance = query<HTMLElement>('#custom-plan-maintenance')
+      const money = (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      let subtotal = 0
+      let needsQuote = false
+      if (items) items.innerHTML = selected.length ? selected.map(input => {
+        const price = input.dataset['price'] ? Number(input.dataset['price']) : null
+        if (price === null) { needsQuote = true; return '<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>Sob consulta</strong></div>' }
+        subtotal += price
+        return '<div class="flex justify-between gap-4 text-sm text-navy"><span>'+input.value+'</span><strong>'+money(price)+'</strong></div>'
+      }).join('') : ''
+      const maintenanceBase = months > 0 ? 45 * months : 0
+      const maintenanceDiscounted = maintenanceBase * 0.85
+      const total = subtotal + maintenanceDiscounted
+      if (!selected.length) {
+        if (summary) summary.textContent = 'Selecione pelo menos um serviço para montar sua solicitação.'
+        if (maintenance) maintenance.textContent = ''
+      } else {
+        if (summary) summary.innerHTML = '<strong>Total estimado: '+money(total)+'</strong>'+ (needsQuote ? ' <span class="text-xs text-muted">+ valor da página de vendas, sob consulta</span>' : '')
+        if (maintenance) maintenance.textContent = months > 0 ? 'Manutenção: '+money(45)+' × '+months+' mês(es), com 15% de desconto = '+money(maintenanceDiscounted)+'.' : 'Sem manutenção selecionada.'
+      }
+    }
+    updateCustomPlan()
+
     root.querySelectorAll<HTMLElement>('.plano-cta').forEach(el => on(el, 'click', () => {
       const select = query<HTMLSelectElement>('#servico')
       if (select && el.dataset['plano']) select.value = el.dataset['plano']
