@@ -28,7 +28,7 @@ function Index() {
     const html = rawPage
       .replaceAll('/media/otimizahub-logo-light.webp', goldLogo)
       .replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
-    const withoutPlans = html.replace(/<section[^>]*\bid=["']planos["'][^>]*>[\\s\\S]*?<\\/section>/i, '')
+    const withoutPlans = html.replace(/<section[^>]*\bid=["']planos["'][^>]*>[\s\S]*?<\/section>/i, '')
     return { __html: withoutPlans }
   }, [])
   const [imageReady, setImageReady] = useState(false)
