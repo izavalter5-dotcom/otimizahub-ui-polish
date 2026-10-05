@@ -343,10 +343,11 @@ body { margin:0 }
 .oh-page.theme-dark .comparison-grid:not(.comparison-head)>div{color:var(--oh-dark-ink)!important}
 .oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-without{color:var(--oh-dark-muted)!important}
 /* Comparison table: use a calmer, darker text hierarchy in dark mode. */
-.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-criterion{color:#c2b6cf!important}
-.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-without{color:#9f91ad!important}
-.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-with{color:#b1a4be!important}
-.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-criterion b{color:#cfc3d9!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-criterion{color:#8b7898!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-without{color:#75647f!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-with{color:#806e8b!important}
+.oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-criterion b{color:#9a87a6!important}
+.oh-page.theme-dark .comparison-head .comparison-without,.oh-page.theme-dark .comparison-head .comparison-with{color:#8f7b9d!important}
 
 /* Dark mode: accessibility pass — strengthen secondary text and keep key highlights white. */
 .oh-page.theme-dark {
