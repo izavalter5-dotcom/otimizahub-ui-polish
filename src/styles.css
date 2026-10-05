@@ -341,3 +341,40 @@ body { margin:0 }
 .oh-page.theme-dark .comparison-table-wrap{background:var(--oh-dark-surface)!important;border-color:var(--oh-dark-border)!important}
 .oh-page.theme-dark .comparison-grid:not(.comparison-head)>div{color:var(--oh-dark-ink)!important}
 .oh-page.theme-dark .comparison-grid:not(.comparison-head) .comparison-without{color:var(--oh-dark-muted)!important}
+
+/* Dark mode: accessibility pass — strengthen secondary text and keep key highlights white. */
+.oh-page.theme-dark {
+  --oh-dark-muted:#d7cfe3;
+}
+.oh-page.theme-dark .text-muted,
+.oh-page.theme-dark .text-slate-300,
+.oh-page.theme-dark .text-slate-400,
+.oh-page.theme-dark p,
+.oh-page.theme-dark li,
+.oh-page.theme-dark .oh-about-note p,
+.oh-page.theme-dark .oh-dashboard-intro p,
+.oh-page.theme-dark .oh-dashboard-actions>div,
+.oh-page.theme-dark .oh-dashboard-foot,
+.oh-page.theme-dark .oh-process-card p,
+.oh-page.theme-dark #como-funciona .reveal>p {
+  color:var(--oh-dark-muted)!important;
+}
+.oh-page.theme-dark h1,
+.oh-page.theme-dark h2,
+.oh-page.theme-dark h3,
+.oh-page.theme-dark h4,
+.oh-page.theme-dark h5,
+.oh-page.theme-dark h6,
+.oh-page.theme-dark .oh-about-note h3,
+.oh-page.theme-dark .oh-dashboard-intro h2,
+.oh-page.theme-dark .oh-process-card h3,
+.oh-page.theme-dark .oh-dashboard-top strong,
+.oh-page.theme-dark .oh-dashboard-chart>strong,
+.oh-page.theme-dark .oh-dashboard-actions>strong {
+  color:#fff!important;
+}
+.oh-page.theme-dark .oh-about-note .oh-eyebrow,
+.oh-page.theme-dark .oh-eyebrow,
+.oh-page.theme-dark .oh-kicker {
+  color:var(--oh-brand-purple-light)!important;
+}
