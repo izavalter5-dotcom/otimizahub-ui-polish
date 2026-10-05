@@ -405,3 +405,130 @@ body { margin:0 }
   .oh-plans-hero>img{object-position:62% center}
   .oh-plans-hero-shade{background:linear-gradient(0deg,var(--oh-night) 0%,color-mix(in oklch,var(--oh-night) 76%,transparent) 62%,color-mix(in oklch,var(--oh-night) 35%,transparent) 100%)}
 }
+
+
+/* Senior responsive refinement — hero, pricing hierarchy and mobile density */
+.oh-page .oh-hero-shade{
+  background:linear-gradient(90deg,
+    color-mix(in oklch,var(--oh-night) 78%,transparent) 0%,
+    color-mix(in oklch,var(--oh-night) 44%,transparent) 42%,
+    color-mix(in oklch,var(--oh-night) 0%,transparent) 100%);
+}
+.oh-page .oh-hero-media video{filter:saturate(1.03) contrast(.98)}
+.oh-page #planos{padding-top:clamp(48px,6vw,76px)!important;padding-bottom:clamp(56px,7vw,88px)!important}
+.oh-page #planos>.max-w-6xl>div:first-child h2{font-size:clamp(2rem,4vw,3.7rem)!important}
+.oh-page #planos>.max-w-6xl>div:first-child p{max-width:680px;margin-left:auto;margin-right:auto;font-size:clamp(.9rem,1.3vw,1rem)}
+.oh-page #planos .plan-intro-line{margin-top:clamp(38px,5vw,58px)!important}
+.oh-page #planos .plan-card{
+  padding:clamp(1rem,1.8vw,1.35rem)!important;
+  min-width:0;
+}
+.oh-page #planos .plan-card h3{font-size:clamp(1rem,1.35vw,1.18rem)!important;line-height:1.3}
+.oh-page #planos .plan-card>p.text-sm{font-size:.82rem!important;line-height:1.55;margin-top:.45rem!important}
+.oh-page #planos .plan-card>p.font-display.text-3xl{font-size:clamp(1.65rem,2.4vw,2.1rem)!important;margin-top:1rem!important}
+.oh-page #planos .plan-card>p.font-display.text-xl{font-size:1rem!important;margin-top:.55rem!important}
+.oh-page #planos .plan-includes{margin-top:1rem!important;padding:.85rem 1rem!important}
+.oh-page #planos .plan-feature-list{margin-top:.55rem!important}
+.oh-page #planos .plan-feature{font-size:.75rem!important;line-height:1.45!important}
+.oh-page #planos .plan-card .plano-cta{margin-top:1rem!important;padding:.65rem .9rem!important;font-size:.78rem!important}
+.oh-page #planos .custom-plan-builder{padding:clamp(1rem,2.2vw,1.5rem)!important}
+.oh-page #planos .custom-plan-builder>.grid{gap:clamp(1rem,2.5vw,1.75rem)!important}
+.oh-page #planos .custom-service-card{padding:.85rem!important}
+.oh-page #planos .custom-service-card strong{font-size:.82rem!important}
+.oh-page #planos .custom-service-card label{font-size:.78rem!important;line-height:1.35}
+.oh-page #planos .custom-service-card small,
+.oh-page #planos .custom-service-card p{font-size:.7rem!important;line-height:1.45}
+.oh-page #planos #custom-plan-total{padding:1rem!important}
+.oh-page #planos #custom-plan-total strong{font-size:clamp(1.7rem,3vw,2.25rem)!important}
+.custom-plan-result-row{
+  display:flex;
+  justify-content:space-between;
+  gap:.75rem;
+  align-items:flex-start;
+  padding:.55rem 0;
+  border-bottom:1px solid var(--oh-border);
+  color:var(--oh-ink);
+  font-size:.76rem;
+  line-height:1.4;
+}
+.custom-plan-result-row:last-child{border-bottom:0}
+.custom-plan-result-row>span{min-width:0}
+.custom-plan-result-row>strong{white-space:nowrap}
+.custom-plan-result-row small{
+  display:block;
+  margin-top:.2rem;
+  color:var(--oh-muted);
+  font-size:.67rem;
+  line-height:1.45;
+}
+.custom-plan-result-maintenance small{color:var(--oh-muted)}
+.custom-plan-empty{margin:0;color:var(--oh-muted);font-size:.72rem}
+.custom-plan-summary-line,
+.custom-plan-summary-discount,
+.custom-plan-summary-total{display:block;margin-top:.3rem}
+.custom-plan-summary-discount{color:var(--oh-brand-purple,#6f2dbd);font-size:.72rem}
+.custom-plan-summary-total{margin-top:.65rem;font-size:.88rem}
+.oh-page.theme-dark .custom-plan-result-row{color:var(--oh-dark-ink);border-color:var(--oh-dark-border)}
+.oh-page.theme-dark .custom-plan-result-row small,
+.oh-page.theme-dark .custom-plan-empty{color:var(--oh-dark-muted)}
+.oh-page.theme-dark .custom-plan-summary-discount{color:var(--oh-brand-purple-light)}
+.oh-page.theme-dark .custom-plan-summary-line,
+.oh-page.theme-dark .custom-plan-summary-total{color:var(--oh-dark-ink)}
+.oh-page #planos .custom-plan-builder .rounded-xl2{border-radius:10px!important}
+
+@media(max-width:900px){
+  .oh-page #planos>.max-w-6xl>div:first-child{text-align:left!important}
+  .oh-page #planos>.max-w-6xl>div:first-child p{margin-left:0;margin-right:0}
+  .oh-page #planos .grid.md\\:grid-cols-3,
+  .oh-page #planos .grid.sm\\:grid-cols-2{gap:.75rem!important}
+}
+@media(max-width:767px){
+  .oh-page .oh-hero{
+    min-height:min(680px,88svh);
+    padding:96px 20px 76px;
+  }
+  .oh-page .oh-hero-shade{
+    background:linear-gradient(0deg,
+      color-mix(in oklch,var(--oh-night) 72%,transparent) 0%,
+      color-mix(in oklch,var(--oh-night) 38%,transparent) 42%,
+      color-mix(in oklch,var(--oh-night) 0%,transparent) 100%);
+  }
+  .oh-page .oh-hero h1{font-size:clamp(2.1rem,10vw,3rem);max-width:12ch;margin:16px 0}
+  .oh-page .oh-hero p{font-size:.88rem;line-height:1.55;max-width:430px}
+  .oh-page .oh-hero-actions{gap:14px;margin-top:24px}
+  .oh-page .oh-primary-link{padding:12px 15px;font-size:.8rem}
+  .oh-page .oh-text-link{font-size:.78rem}
+  .oh-page #planos{padding-top:44px!important;padding-bottom:52px!important}
+  .oh-page #planos>.max-w-6xl{padding-left:16px!important;padding-right:16px!important}
+  .oh-page #planos .plan-intro-line{margin-top:32px!important;gap:10px}
+  .oh-page #planos .plan-intro-line>span:last-child{font-size:.62rem}
+  .oh-page #planos .plan-card{padding:1rem!important;border-radius:10px!important}
+  .oh-page #planos .plan-card>p.font-display.text-3xl{margin-top:.8rem!important}
+  .oh-page #planos .plan-card .plan-includes{padding:.75rem .85rem!important}
+  .oh-page #planos .plan-feature{font-size:.7rem!important}
+  .oh-page #planos .custom-plan-builder>.grid{display:flex!important;flex-direction:column!important}
+  .oh-page #planos .custom-plan-builder>.grid>div:last-child{order:-1}
+  .oh-page #planos .custom-plan-builder>.grid>div:last-child{
+    width:100%;
+    padding:1rem!important;
+    position:relative;
+  }
+  .oh-page #planos .custom-plan-builder>.grid>div:first-child{width:100%}
+  .oh-page #planos .custom-plan-builder .grid.sm\\:grid-cols-2{grid-template-columns:1fr!important}
+  .oh-page #planos .custom-service-card{padding:.8rem!important}
+  .oh-page #planos .custom-plan-builder h3{font-size:1.2rem!important;line-height:1.25}
+  .oh-page #planos .custom-plan-builder>div>p{font-size:.78rem!important;line-height:1.5}
+  .oh-page #planos #custom-plan-items{max-height:260px;overflow:auto;padding-right:2px}
+  .custom-plan-result-row{font-size:.7rem}
+  .custom-plan-result-row small{font-size:.61rem}
+  .custom-plan-summary-total{font-size:.82rem}
+}
+@media(max-width:420px){
+  .oh-page .oh-hero{min-height:620px;padding-left:16px;padding-right:16px}
+  .oh-page .oh-hero h1{font-size:2rem}
+  .oh-page .oh-hero-index{left:16px;bottom:18px;font-size:.56rem}
+  .oh-page #planos .plan-card{padding:.85rem!important}
+  .oh-page #planos .plan-card>p.text-sm{font-size:.76rem!important}
+  .oh-page #planos .plan-feature{font-size:.66rem!important}
+  .oh-page #planos .custom-plan-builder{padding:.8rem!important}
+}
