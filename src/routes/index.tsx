@@ -35,6 +35,9 @@ function Index() {
   useEffect(() => {
     const root = container.current
     if (!root) return
+    const previousScrollRestoration = window.history.scrollRestoration
+    window.history.scrollRestoration = 'manual'
+    if (!window.location.hash) window.scrollTo(0, 0)
     const scrollToHash = () => {
       const id = window.location.hash.replace(/^#/, '')
       if (!id) return
@@ -168,7 +171,7 @@ function Index() {
       try { localStorage.setItem('otimizahub-cookie-consent', 'accepted') } catch { /* storage may be blocked */ }
       banner?.remove()
     })
-    return () => { observer.disconnect(); events.forEach(off => off()); window.removeEventListener('hashchange', scrollToHash) }
+    return () => { observer.disconnect(); events.forEach(off => off()); window.removeEventListener('hashchange', scrollToHash); window.history.scrollRestoration = previousScrollRestoration }
   }, [])
   return <div ref={container} className="oh-page" data-images-ready={imageReady ? 'true' : undefined} dangerouslySetInnerHTML={pageMarkup} />
 }
