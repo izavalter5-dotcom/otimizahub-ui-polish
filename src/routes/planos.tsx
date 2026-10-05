@@ -52,6 +52,8 @@ function StandalonePage() {
       const itemsEl = root.querySelector<HTMLElement>('#custom-plan-items')
       const summary = root.querySelector<HTMLElement>('#custom-plan-summary')
       const maintenanceNote = root.querySelector<HTMLElement>('#custom-plan-maintenance')
+      let grossTotal = 0
+      let discountTotal = 0
       let total = 0
       let hasQuote = false
       const rows: string[] = []
@@ -72,7 +74,7 @@ function StandalonePage() {
 
         if (price === null || Number.isNaN(price)) {
           hasQuote = true
-          rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>Sob consulta</strong></div>`)
+          rows.push(`<div class="custom-plan-result-row"><span>${input.value}</span><strong>Sob consulta</strong></div>`)
           return
         }
 
@@ -81,33 +83,48 @@ function StandalonePage() {
           const select = root.querySelector<HTMLSelectElement>(`select[data-months-group="${group}"]`)
           const months = Number(select?.value || 0)
           if (months > 0) {
-            const maintenanceTotal = price * months * 0.85
-            total += maintenanceTotal
-            rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value} · ${months} mês(es)</span><strong>${money(maintenanceTotal)}</strong></div>`)
+            const gross = price * months
+            const discountRate = months >= 2 ? 0.15 : 0
+            const discount = gross * discountRate
+            const net = gross - discount
+            grossTotal += gross
+            discountTotal += discount
+            total += net
+            const discountLine = discountRate > 0
+              ? `<small>Bruto: ${money(gross)} · desconto 15%: −${money(discount)}</small>`
+              : `<small>Valor bruto: ${money(gross)} · sem desconto em 1 mês</small>`
+            rows.push(`<div class="custom-plan-result-row custom-plan-result-maintenance"><span>${input.value} · ${months} mês(es)${discountLine}</span><strong>${money(net)}</strong></div>`)
           }
           return
         }
 
         if (kind === 'monthly') {
+          grossTotal += price
           total += price
-          rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>${money(price)}/mês</strong></div>`)
+          rows.push(`<div class="custom-plan-result-row"><span>${input.value}<small>Valor mensal</small></span><strong>${money(price)}/mês</strong></div>`)
           return
         }
 
+        grossTotal += price
         total += price
-        rows.push(`<div class="flex justify-between gap-3 text-sm text-navy"><span>${input.value}</span><strong>${money(price)}</strong></div>`)
+        rows.push(`<div class="custom-plan-result-row"><span>${input.value}</span><strong>${money(price)}</strong></div>`)
       })
 
       if (totalEl) totalEl.textContent = money(total)
-      if (itemsEl) itemsEl.innerHTML = rows.length ? rows.join('') : '<p class="text-xs text-muted">Nenhum serviço selecionado.</p>'
+      if (itemsEl) itemsEl.innerHTML = rows.length ? rows.join('') : '<p class="custom-plan-empty">Nenhum serviço selecionado.</p>'
       if (summary) {
-        summary.innerHTML = selected.length
-          ? `<strong>Total estimado: ${money(total)}</strong>${hasQuote ? ' <span class="text-xs text-muted">+ serviço sob consulta</span>' : ''}`
-          : 'Selecione pelo menos um serviço para montar sua solicitação.'
+        if (!selected.length) {
+          summary.innerHTML = 'Selecione pelo menos um serviço para montar sua solicitação.'
+        } else {
+          const discountLine = discountTotal > 0
+            ? `<span class="custom-plan-summary-line">Subtotal bruto: <strong>${money(grossTotal)}</strong></span><span class="custom-plan-summary-discount">Desconto aplicado: <strong>−${money(discountTotal)}</strong> (15% nas gestões de 2 ou 3 meses)</span><span class="custom-plan-summary-total">Total estimado: <strong>${money(total)}</strong></span>`
+            : `<span class="custom-plan-summary-line">Subtotal: <strong>${money(grossTotal)}</strong></span><span class="custom-plan-summary-total">Total estimado: <strong>${money(total)}</strong></span>`
+          summary.innerHTML = discountLine + (hasQuote ? ' <span class="text-xs text-muted">+ serviço sob consulta</span>' : '')
+        }
       }
       if (maintenanceNote) {
         maintenanceNote.textContent = selected.some(input => input.dataset['kind'] === 'maintenance')
-          ? 'Cada gestão mensal é calculada separadamente. Para 2 ou 3 meses, aplica-se 15% de desconto ao período.'
+          ? 'Gestões de 2 ou 3 meses recebem 15% de desconto sobre o valor bruto do período. Cada serviço é calculado separadamente.'
           : ''
       }
     }
