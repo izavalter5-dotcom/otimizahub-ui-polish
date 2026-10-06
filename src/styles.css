@@ -17,17 +17,17 @@
   --font-sans: "Inter", sans-serif;
 }
 :root {
-  --oh-paper: oklch(0.984 0.009 303);
+  --oh-paper: oklch(0.984 0.009 285);
   --oh-white: oklch(1 0 0);
   --oh-ink: oklch(0.16 0.022 295);
   --oh-night: oklch(0.15 0.022 295);
   --oh-violet: oklch(0.51 0.236 295);
-  --oh-lilac: oklch(0.83 0.09 300);
+  --oh-lilac: oklch(0.83 0.09 285);
   --oh-gold: oklch(0.79 0.113 83);
   --oh-green: oklch(0.72 0.16 163);
-  --oh-soft: oklch(0.963 0.016 303);
-  --oh-muted: oklch(0.55 0.023 302);
-  --oh-border: oklch(0.88 0.024 303);
+  --oh-soft: oklch(0.963 0.016 285);
+  --oh-muted: oklch(0.55 0.023 285);
+  --oh-border: oklch(0.88 0.024 285);
 }
 html { scroll-behavior:smooth }
 body { margin:0 }
