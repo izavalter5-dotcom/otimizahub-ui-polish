@@ -5,6 +5,10 @@ import workspaceImage from '../assets/hero-workspace.jpg'
 import contactImage from '../assets/contact-people.jpg'
 import foodImage from '../assets/menu-food.jpg'
 import goldLogo from '../assets/otimizahub-logo-gold-cropped.png'
+import solucaoGoogleImage from '../assets/solucoes-google-otimizahub.png'
+import solucaoLandingImage from '../assets/solucoes-landing-page-otimizahub.png'
+import solucaoMetaAdsImage from '../assets/solucoes-meta-ads-otimizahub.png'
+import solucaoInstagramImage from '../assets/solucoes-instagram-otimizahub.png'
 
 const description = 'A OtimizaHub simplifica a presença digital de micro e pequenas empresas com Perfil da Empresa no Google, landing pages profissionais e páginas de vendas.'
 
