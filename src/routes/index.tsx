@@ -32,6 +32,10 @@ function Index() {
     const html = rawPage
       .replaceAll('/media/otimizahub-logo-light.webp', goldLogo)
       .replaceAll('/media/otimizahub-logo-dark.webp', goldLogo)
+      .replaceAll('https://raw.githubusercontent.com/izavalter5-dotcom/otimizahub-ui-polish/main/public/media/solucoes-google-otimizahub.png', solucaoGoogleImage)
+      .replaceAll('https://raw.githubusercontent.com/izavalter5-dotcom/otimizahub-ui-polish/main/public/media/solucoes-landing-page-otimizahub.png', solucaoLandingImage)
+      .replaceAll('https://raw.githubusercontent.com/izavalter5-dotcom/otimizahub-ui-polish/main/public/media/solucoes-meta-ads-otimizahub.png', solucaoMetaAdsImage)
+      .replaceAll('https://raw.githubusercontent.com/izavalter5-dotcom/otimizahub-ui-polish/main/public/media/solucoes-instagram-otimizahub.png', solucaoInstagramImage)
     const withoutPlans = html.replace(/<section[^>]*\bid=["']planos["'][^>]*>[\s\S]*?<\/section>/i, '')
     return { __html: withoutPlans }
   }, [])
