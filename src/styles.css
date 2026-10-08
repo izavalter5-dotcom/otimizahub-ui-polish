@@ -631,6 +631,7 @@ body { margin:0 }
 @media(max-width:767px){.oh-ai-head{grid-template-columns:1fr;gap:20px}.oh-ai-flow-grid{grid-template-columns:1fr;gap:28px}.oh-ai-flow-grid:before{display:none}.oh-ai-flow-step,.oh-ai-flow-step:not(:first-child){padding:0;min-height:0;border-left:0}.oh-ai-flow-step:not(:last-child){padding-bottom:28px;border-bottom:1px solid var(--oh-border)}.oh-ai-flow-top{height:42px}.oh-ai-flow-top>span{width:42px;height:42px}.oh-ai-visual{height:112px}}
 
 /* Real service showcase */
+.oh-page .showcase-shell{display:block}
 .oh-page .showcase-guide{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;background:var(--oh-night);color:var(--oh-white);border-bottom:1px solid color-mix(in oklch,var(--oh-lilac) 22%,transparent)}
 .oh-page .showcase-guide span{font:700 .6rem "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--oh-lilac)}
 .oh-page .showcase-guide small{font-size:.72rem;color:color-mix(in oklch,var(--oh-white) 68%,transparent)}
